@@ -145,29 +145,29 @@ Voici une liste exhaustive des fonctionnalités, conçues pour développer des S
 
 ## Getting Started
 
-Pour commencer à utiliser Mon ShipFast, suivez ces étapes :
+To get started with Mon ShipFast, follow these steps:
 
-1.  **Clonez le repository** :
+1.  **Clone the repository**:
     ```bash
-    git clone https://github.com/votre-utilisateur/mon-shipfast.git
+    git clone https://github.com/your-user/mon-shipfast.git
     cd mon-shipfast
     ```
 
-2.  **Installez les dépendances** :
+2.  **Install the dependencies**:
     ```bash
     npm install
     ```
 
-3.  **Configurez les variables d'environnement** :
-    - Créez un fichier `.env.local` à la racine du projet.
-    - Ajoutez vos clés Supabase, Stripe, et autres services.
+3.  **Configure the environment variables**:
+    - Create a `.env.local` file in the root of the project.
+    - Add your Supabase, Stripe, and other service keys.
 
-4.  **Lancez le serveur de développement** :
+4.  **Run the development server**:
     ```bash
     npm run dev
     ```
 
-5.  Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour voir le résultat.
+5.  Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
 
 ---
 

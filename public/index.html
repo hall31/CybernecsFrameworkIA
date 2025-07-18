@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon ShipFast - Framework SaaS YC-Style</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <style>
+        .code-block {
+            background: #1a1a1a;
+            color: #e1e1e1;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            margin: 1rem 0;
+        }
+        .architecture-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            margin: 1rem 0;
+        }
+        .feature-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 0.5rem 0;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .tech-badge {
+            background: #3b82f6;
+            color: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            margin: 0.125rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div class="max-w-6xl mx-auto p-6">
+
+        <!-- Header -->
+        <div class="text-center mb-8">
+            <h1 class="text-4xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-rocket text-blue-600"></i> Mon ShipFast
+            </h1>
+            <p class="text-xl text-gray-600">Framework pour Développer des SaaS à la Volée (YC-Style)</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <span class="tech-badge">Next.js</span>
+                <span class="tech-badge">Supabase</span>
+                <span class="tech-badge">Stripe</span>
+                <span class="tech-badge">Vercel</span>
+                <span class="tech-badge">IA-Ready</span>
+            </div>
+        </div>
+
+        <!-- Introduction -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-lightbulb text-yellow-500"></i> Introduction et Philosophie
+            </h2>
+            <div class="architecture-box">
+                <h3 class="text-xl font-semibold mb-3">Philosophie YC-Intégrée</h3>
+                <div class="grid md:grid-cols-2 gap-4">
+                    <div>
+                        <h4 class="font-semibold mb-2"><i class="fas fa-shipping-fast"></i> Ship Fast</h4>
+                        <p class="text-sm">Boilerplate 80% prêt (auth, UI, paiements) pour focus sur features uniques</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2"><i class="fas fa-chart-line"></i> MVP-First</h4>
+                        <p class="text-sm">Lancez un produit minimal, testez avec users réels, itérez basé sur data</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2"><i class="fas fa-cloud"></i> Scalable & Low-Cost</h4>
+                        <p class="text-sm">Serverless pour scaling auto, free tiers pour startups</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold mb-2"><i class="fas fa-robot"></i> IA-Ready</h4>
+                        <p class="text-sm">Prêt pour full agentic avec OpenAI/LangChain hooks</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Architecture Technique -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-sitemap text-blue-600"></i> Architecture Technique
+            </h2>
+
+            <div class="bg-white p-6 rounded-lg border mb-6">
+                <h3 class="text-xl font-semibold mb-4">Diagramme d'Architecture</h3>
+                <div class="bg-gray-100 p-4 rounded">
+                    <pre class="text-sm">
+User Browser
+    ↓ HTTPS
+Frontend: Next.js App (Vercel)
+    ↓ API Calls
+Backend: Supabase (DB, Auth, Realtime)
+    ↓ Custom Logic
+API Routes (Next.js Serverless Functions)
+    ↓ External Calls
+IA Microservice: Python Flask/LangChain
+    ↓ Integrations
+OpenAI/LangChain for Agents
+    ↓ Payments
+Stripe/Lemon Squeezy
+                    </pre>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-4">
+                <div class="feature-card">
+                    <h4 class="font-semibold text-green-600 mb-2">
+                        <i class="fas fa-desktop"></i> Frontend Layer
+                    </h4>
+                    <p class="text-sm text-gray-600">Next.js (SSG/SSR) gère UI/dashboard. Responsive, SEO-ready avec hooks pour realtime updates</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold text-blue-600 mb-2">
+                        <i class="fas fa-server"></i> Backend Layer
+                    </h4>
+                    <p class="text-sm text-gray-600">Supabase (PostgreSQL serverless) pour DB/auth. API routes pour logique simple</p>
+                </div>
+                <div class="feature-card">
+                    <h4 class="font-semibold text-purple-600 mb-2">
+                        <i class="fas fa-cogs"></i> Microservices
+                    </h4>
+                    <p class="text-sm text-gray-600">Python Flask pour IA agents complexes, hébergé séparément (Render/Docker)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stack Logiciel -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-layer-group text-green-600"></i> Stack Logiciel
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg border">
+                    <h3 class="font-semibold text-lg mb-3">
+                        <i class="fas fa-laptop-code text-blue-500"></i> Frontend
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><span class="tech-badge">Next.js</span> React framework pour SSR/SSG</li>
+                        <li><span class="tech-badge">Tailwind CSS</span> Styling rapide, responsive</li>
+                        <li><span class="tech-badge">Shadcn/UI</span> Composants UI prêts</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border">
+                    <h3 class="font-semibold text-lg mb-3">
+                        <i class="fas fa-database text-green-500"></i> Backend/DB
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><span class="tech-badge">Supabase</span> PostgreSQL serverless, auth</li>
+                        <li><span class="tech-badge">Next.js API</span> Serverless functions</li>
+                        <li><span class="tech-badge">Prisma</span> ORM pour database</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border">
+                    <h3 class="font-semibold text-lg mb-3">
+                        <i class="fas fa-robot text-purple-500"></i> IA/Microservices
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><span class="tech-badge">Python</span> Flask/FastAPI avec Docker</li>
+                        <li><span class="tech-badge">LangChain</span> OpenAI API pour agents</li>
+                        <li><span class="tech-badge">Celery</span> Tâches asynchrones</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg border">
+                    <h3 class="font-semibold text-lg mb-3">
+                        <i class="fas fa-tools text-orange-500"></i> Intégrations
+                    </h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><span class="tech-badge">Stripe</span> Paiements et abonnements</li>
+                        <li><span class="tech-badge">Resend</span> Emails transactionnels</li>
+                        <li><span class="tech-badge">Vercel</span> Hosting et CI/CD</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Structure de Fichiers -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-folder-tree text-yellow-600"></i> Structure de Fichiers
+            </h2>
+
+            <div class="code-block">
+<pre>mon-shipfast/
+├── 📁 app/                      # Next.js 13+ App Router
+│   ├── 📁 (auth)/
+│   │   ├── 📄 login/page.tsx
+│   │   └── 📄 register/page.tsx
+│   ├── 📁 (dashboard)/
+│   │   ├── 📄 dashboard/page.tsx
+│   │   ├── 📄 settings/page.tsx
+│   │   └── 📄 billing/page.tsx
+│   ├── 📁 api/
+│   │   ├── 📄 auth/route.ts
+│   │   ├── 📄 stripe/route.ts
+│   │   └── 📄 ai/route.ts
+│   ├── 📄 layout.tsx
+│   ├── 📄 page.tsx             # Landing page
+│   └── 📄 globals.css
+├── 📁 components/
+│   ├── 📁 ui/                  # Shadcn components
+│   ├── 📁 auth/
+│   │   ├── 📄 LoginForm.tsx
+│   │   └── 📄 AuthProvider.tsx
+│   ├── 📁 dashboard/
+│   │   ├── 📄 Sidebar.tsx
+│   │   └── 📄 Header.tsx
+│   └── 📄 LandingPage.tsx
+├── 📁 lib/
+│   ├── 📄 supabase.ts          # Supabase client
+│   ├── 📄 stripe.ts            # Stripe configuration
+│   ├── 📄 utils.ts             # Utility functions
+│   └── 📄 validations.ts       # Zod schemas
+├── 📁 hooks/
+│   ├── 📄 useAuth.ts
+│   ├── 📄 useSubscription.ts
+│   └── 📄 useAI.ts
+├── 📁 types/
+│   └── 📄 index.ts             # TypeScript types
+├── 📁 microservices/
+│   └── 📁 ai-service/          # Python microservice
+│       ├── 📄 app.py
+│       ├── 📄 requirements.txt
+│       └── 📄 Dockerfile
+├── 📄 package.json
+├── 📄 next.config.js
+├── 📄 tailwind.config.js
+├── 📄 .env.local
+└── 📄 README.md</pre>
+            </div>
+        </section>
+
+        <!-- Configuration Supabase -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-database text-green-600"></i> Configuration Supabase
+            </h2>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">1. Client Supabase</h3>
+                <div class="code-block">
+<pre>// lib/supabase.ts
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey)
+
+// Types pour TypeScript
+export type Database = {
+  public: {
+    Tables: {
+      profiles: {
+        Row: {
+          id: string
+          email: string
+          full_name: string
+          subscription_status: string
+          created_at: string
+        }
+        Insert: {
+          id: string
+          email: string
+          full_name?: string
+          subscription_status?: string
+        }
+        Update: {
+          full_name?: string
+          subscription_status?: string
+        }
+      }
+    }
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">2. Schema Database</h3>
+                <div class="code-block">
+<pre>-- Supabase SQL Schema
+-- Table des profils utilisateurs
+CREATE TABLE profiles (
+  id UUID REFERENCES auth.users ON DELETE CASCADE,
+  email TEXT UNIQUE NOT NULL,
+  full_name TEXT,
+  subscription_status TEXT DEFAULT 'free',
+  subscription_id TEXT,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL,
+  PRIMARY KEY (id)
+);
+
+-- Table des projets/campagnes (exemple OutboundBoost)
+CREATE TABLE campaigns (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
+  name TEXT NOT NULL,
+  status TEXT DEFAULT 'draft',
+  target_audience JSONB,
+  ai_config JSONB,
+  results JSONB,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
+-- RLS Policies
+ALTER TABLE profiles ENABLE ROW LEVEL SECURITY;
+ALTER TABLE campaigns ENABLE ROW LEVEL SECURITY;
+
+-- Policies
+CREATE POLICY "Users can view own profile" ON profiles FOR SELECT USING (auth.uid() = id);
+CREATE POLICY "Users can update own profile" ON profiles FOR UPDATE USING (auth.uid() = id);
+CREATE POLICY "Users can view own campaigns" ON campaigns FOR SELECT USING (auth.uid() = user_id);</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Authentification -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-shield-alt text-blue-600"></i> Système d'Authentification
+            </h2>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">1. Hook d'Authentification</h3>
+                <div class="code-block">
+<pre>// hooks/useAuth.ts
+import { useEffect, useState } from 'react'
+import { supabase } from '@/lib/supabase'
+import { User } from '@supabase/supabase-js'
+
+export function useAuth() {
+  const [user, setUser] = useState&lt;User | null&gt;(null)
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    // Récupérer session actuelle
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setUser(session?.user ?? null)
+      setLoading(false)
+    })
+
+    // Écouter changements d'auth
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event, session) => {
+        setUser(session?.user ?? null)
+        setLoading(false)
+      }
+    )
+
+    return () => subscription.unsubscribe()
+  }, [])
+
+  return {
+    user,
+    loading,
+    signIn: async (email: string, password: string) => {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      })
+      return { data, error }
+    },
+    signUp: async (email: string, password: string) => {
+      const { data, error } = await supabase.auth.signUp({
+        email,
+        password,
+      })
+      return { data, error }
+    },
+    signOut: async () => {
+      const { error } = await supabase.auth.signOut()
+      return { error }
+    }
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">2. Composant de Login</h3>
+                <div class="code-block">
+<pre>// components/auth/LoginForm.tsx
+'use client'
+import { useState } from 'react'
+import { useAuth } from '@/hooks/useAuth'
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { useRouter } from 'next/navigation'
+
+export default function LoginForm() {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [loading, setLoading] = useState(false)
+  const { signIn } = useAuth()
+  const router = useRouter()
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setLoading(true)
+
+    const { error } = await signIn(email, password)
+
+    if (error) {
+      alert('Erreur de connexion: ' + error.message)
+    } else {
+      router.push('/dashboard')
+    }
+
+    setLoading(false)
+  }
+
+  return (
+    &lt;div className="max-w-md mx-auto"&gt;
+      &lt;form onSubmit={handleSubmit} className="space-y-4"&gt;
+        &lt;div&gt;
+          &lt;label className="block text-sm font-medium"&gt;Email&lt;/label&gt;
+          &lt;Input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          /&gt;
+        &lt;/div&gt;
+        &lt;div&gt;
+          &lt;label className="block text-sm font-medium"&gt;Mot de passe&lt;/label&gt;
+          &lt;Input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          /&gt;
+        &lt;/div&gt;
+        &lt;Button type="submit" disabled={loading} className="w-full"&gt;
+          {loading ? 'Connexion...' : 'Se connecter'}
+        &lt;/Button&gt;
+      &lt;/form&gt;
+    &lt;/div&gt;
+  )
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-tachometer-alt text-purple-600"></i> Dashboard Utilisateur
+            </h2>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">1. Layout Dashboard</h3>
+                <div class="code-block">
+<pre>// app/(dashboard)/layout.tsx
+import { Sidebar } from '@/components/dashboard/Sidebar'
+import { Header } from '@/components/dashboard/Header'
+import { AuthProvider } from '@/components/auth/AuthProvider'
+
+export default function DashboardLayout({
+  children,
+}: {
+  children: React.ReactNode
+}) {
+  return (
+    &lt;AuthProvider&gt;
+      &lt;div className="flex h-screen bg-gray-100"&gt;
+        &lt;Sidebar /&gt;
+        &lt;div className="flex-1 flex flex-col overflow-hidden"&gt;
+          &lt;Header /&gt;
+          &lt;main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200 p-6"&gt;
+            {children}
+          &lt;/main&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/AuthProvider&gt;
+  )
+}</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">2. Sidebar Navigation</h3>
+                <div class="code-block">
+<pre>// components/dashboard/Sidebar.tsx
+'use client'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { cn } from '@/lib/utils'
+
+const navigation = [
+  { name: 'Dashboard', href: '/dashboard', icon: '📊' },
+  { name: 'Campagnes', href: '/dashboard/campaigns', icon: '🚀' },
+  { name: 'Analytics', href: '/dashboard/analytics', icon: '📈' },
+  { name: 'Paramètres', href: '/dashboard/settings', icon: '⚙️' },
+  { name: 'Facturation', href: '/dashboard/billing', icon: '💳' },
+]
+
+export function Sidebar() {
+  const pathname = usePathname()
+
+  return (
+    &lt;div className="w-64 bg-white shadow-md"&gt;
+      &lt;div className="p-6"&gt;
+        &lt;h2 className="text-2xl font-bold text-gray-800"&gt;ShipFast&lt;/h2&gt;
+      &lt;/div&gt;
+      &lt;nav className="mt-6"&gt;
+        {navigation.map((item) => (
+          &lt;Link
+            key={item.name}
+            href={item.href}
+            className={cn(
+              'flex items-center px-6 py-3 text-sm font-medium hover:bg-gray-50',
+              pathname === item.href
+                ? 'bg-blue-50 text-blue-700 border-r-2 border-blue-700'
+                : 'text-gray-600 hover:text-gray-900'
+            )}
+          &gt;
+            &lt;span className="mr-3"&gt;{item.icon}&lt;/span&gt;
+            {item.name}
+          &lt;/Link&gt;
+        ))}
+      &lt;/nav&gt;
+    &lt;/div&gt;
+  )
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intégration Stripe -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-credit-card text-green-600"></i> Système de Paiement Stripe
+            </h2>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">1. Configuration Stripe</h3>
+                <div class="code-block">
+<pre>// lib/stripe.ts
+import Stripe from 'stripe'
+
+export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
+  apiVersion: '2023-10-16',
+})
+
+// Plans d'abonnement
+export const PLANS = {
+  FREE: {
+    name: 'Free',
+    price: 0,
+    features: ['5 campagnes/mois', 'Support basique'],
+  },
+  PRO: {
+    name: 'Pro',
+    price: 49,
+    priceId: process.env.STRIPE_PRO_PRICE_ID!,
+    features: ['Campagnes illimitées', 'IA avancée', 'Support prioritaire'],
+  },
+  ENTERPRISE: {
+    name: 'Enterprise',
+    price: 199,
+    priceId: process.env.STRIPE_ENTERPRISE_PRICE_ID!,
+    features: ['Tout Pro +', 'API personnalisée', 'Manager dédié'],
+  },
+}</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">2. API Route pour Checkout</h3>
+                <div class="code-block">
+<pre>// app/api/stripe/checkout/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+import { stripe, PLANS } from '@/lib/stripe'
+import { supabase } from '@/lib/supabase'
+
+export async function POST(request: NextRequest) {
+  try {
+    const { priceId, userId } = await request.json()
+
+    // Vérifier l'utilisateur
+    const { data: user } = await supabase
+      .from('profiles')
+      .select('email')
+      .eq('id', userId)
+      .single()
+
+    if (!user) {
+      return NextResponse.json({ error: 'Utilisateur non trouvé' }, { status: 404 })
+    }
+
+    // Créer session Stripe Checkout
+    const session = await stripe.checkout.sessions.create({
+      customer_email: user.email,
+      line_items: [
+        {
+          price: priceId,
+          quantity: 1,
+        },
+      ],
+      mode: 'subscription',
+      success_url: `${process.env.NEXT_PUBLIC_URL}/dashboard/billing?success=true`,
+      cancel_url: `${process.env.NEXT_PUBLIC_URL}/dashboard/billing?canceled=true`,
+      metadata: {
+        userId,
+      },
+    })
+
+    return NextResponse.json({ sessionId: session.id })
+  } catch (error) {
+    console.error('Erreur Stripe:', error)
+    return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 })
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">3. Composant Pricing</h3>
+                <div class="code-block">
+<pre>// components/PricingSection.tsx
+'use client'
+import { useState } from 'react'
+import { Button } from '@/components/ui/button'
+import { PLANS } from '@/lib/stripe'
+import { useAuth } from '@/hooks/useAuth'
+
+export default function PricingSection() {
+  const [loading, setLoading] = useState&lt;string | null&gt;(null)
+  const { user } = useAuth()
+
+  const handleSubscribe = async (priceId: string, planName: string) => {
+    if (!user) {
+      alert('Veuillez vous connecter')
+      return
+    }
+
+    setLoading(planName)
+
+    try {
+      const response = await fetch('/api/stripe/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ priceId, userId: user.id }),
+      })
+
+      const { sessionId } = await response.json()
+
+      // Rediriger vers Stripe Checkout
+      const stripe = await import('@stripe/stripe-js').then(m =>
+        m.loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!)
+      )
+
+      await stripe?.redirectToCheckout({ sessionId })
+    } catch (error) {
+      console.error('Erreur:', error)
+      alert('Erreur lors de la redirection')
+    } finally {
+      setLoading(null)
+    }
+  }
+
+  return (
+    &lt;div className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto"&gt;
+      {Object.entries(PLANS).map(([key, plan]) => (
+        &lt;div key={key} className="bg-white p-6 rounded-lg border shadow-sm"&gt;
+          &lt;h3 className="text-xl font-bold mb-2"&gt;{plan.name}&lt;/h3&gt;
+          &lt;div className="text-3xl font-bold mb-4"&gt;
+            {plan.price}€&lt;span className="text-sm font-normal"&gt;/mois&lt;/span&gt;
+          &lt;/div&gt;
+          &lt;ul className="space-y-2 mb-6"&gt;
+            {plan.features.map((feature, index) => (
+              &lt;li key={index} className="flex items-center text-sm"&gt;
+                &lt;span className="mr-2"&gt;✅&lt;/span&gt; {feature}
+              &lt;/li&gt;
+            ))}
+          &lt;/ul&gt;
+          {plan.priceId && (
+            &lt;Button
+              onClick={() => handleSubscribe(plan.priceId, plan.name)}
+              disabled={loading === plan.name}
+              className="w-full"
+            &gt;
+              {loading === plan.name ? 'Chargement...' : 'S\'abonner'}
+            &lt;/Button&gt;
+          )}
+        &lt;/div&gt;
+      ))}
+    &lt;/div&gt;
+  )
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Intégration IA -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-brain text-purple-600"></i> Intégration IA (Microservice Python)
+            </h2>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">1. Microservice Python Flask</h3>
+                <div class="code-block">
+<pre># microservices/ai-service/app.py
+from flask import Flask, request, jsonify
+from flask_cors import CORS
+import openai
+import os
+from langchain_openai import ChatOpenAI
+from langchain.schema import HumanMessage
+import logging
+
+app = Flask(__name__)
+CORS(app)
+
+# Configuration
+openai.api_key = os.getenv('OPENAI_API_KEY')
+llm = ChatOpenAI(temperature=0.7, model="gpt-4")
+
+@app.route('/health', methods=['GET'])
+def health_check():
+    return jsonify({"status": "healthy", "service": "ai-service"})
+
+@app.route('/generate-campaign', methods=['POST'])
+def generate_campaign():
+    try:
+        data = request.json
+        target_audience = data.get('target_audience', '')
+        campaign_type = data.get('campaign_type', 'email')
+        tone = data.get('tone', 'professional')
+
+        # Prompt pour l'IA
+        prompt = f"""
+        Génère une campagne {campaign_type} pour l'audience suivante: {target_audience}
+
+        Tone: {tone}
+
+        Retourne un JSON avec:
+        - subject: Objet du message
+        - content: Contenu principal
+        - cta: Call-to-action
+        - personalization_tips: Conseils de personnalisation
+        """
+
+        # Appel à l'IA
+        response = llm.invoke([HumanMessage(content=prompt)])
+
+        # Parse la réponse (ajouter validation JSON)
+        result = {
+            "status": "success",
+            "campaign": response.content,
+            "metadata": {
+                "model": "gpt-4",
+                "tokens_used": len(response.content.split())
+            }
+        }
+
+        return jsonify(result)
+
+    except Exception as e:
+        logging.error(f"Erreur génération campagne: {str(e)}")
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+
+@app.route('/analyze-prospects', methods=['POST'])
+def analyze_prospects():
+    try:
+        data = request.json
+        prospects_data = data.get('prospects', [])
+
+        # Analyse IA des prospects
+        analysis_prompt = f"""
+        Analyse ces prospects et fournis des insights:
+        {prospects_data}
+
+        Retourne:
+        - Segments principaux
+        - Recommandations d'approche
+        - Score de qualité pour chaque prospect
+        """
+
+        response = llm.invoke([HumanMessage(content=analysis_prompt)])
+
+        return jsonify({
+            "status": "success",
+            "analysis": response.content
+        })
+
+    except Exception as e:
+        return jsonify({
+            "status": "error",
+            "message": str(e)
+        }), 500
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5000, debug=True)</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">2. API Route Next.js pour IA</h3>
+                <div class="code-block">
+<pre>// app/api/ai/generate/route.ts
+import { NextRequest, NextResponse } from 'next/server'
+
+const AI_SERVICE_URL = process.env.AI_SERVICE_URL || 'http://localhost:5000'
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+
+    // Appel au microservice Python
+    const response = await fetch(`${AI_SERVICE_URL}/generate-campaign`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    })
+
+    if (!response.ok) {
+      throw new Error(`Erreur AI service: ${response.status}`)
+    }
+
+    const data = await response.json()
+    return NextResponse.json(data)
+
+  } catch (error) {
+    console.error('Erreur API IA:', error)
+    return NextResponse.json(
+      { error: 'Erreur lors de la génération' },
+      { status: 500 }
+    )
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">3. Hook React pour IA</h3>
+                <div class="code-block">
+<pre>// hooks/useAI.ts
+import { useState } from 'react'
+
+export function useAI() {
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState&lt;string | null&gt;(null)
+
+  const generateCampaign = async (params: {
+    target_audience: string
+    campaign_type: string
+    tone: string
+  }) => {
+    setLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/ai/generate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(params),
+      })
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de la génération')
+      }
+
+      const data = await response.json()
+      return data
+
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Erreur inconnue'
+      setError(message)
+      throw err
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const analyzeProspects = async (prospects: any[]) => {
+    setLoading(true)
+    setError(null)
+
+    try {
+      const response = await fetch('/api/ai/analyze', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prospects }),
+      })
+
+      const data = await response.json()
+      return data
+
+    } catch (err) {
+      const message = err instanceof Error ? err.message : 'Erreur analyse'
+      setError(message)
+      throw err
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return {
+    generateCampaign,
+    analyzeProspects,
+    loading,
+    error,
+  }
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Déploiement -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-rocket text-red-600"></i> Déploiement et Configuration
+            </h2>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">1. Variables d'Environnement</h3>
+                <div class="code-block">
+<pre># .env.local
+# Supabase
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_anon_key
+SUPABASE_SERVICE_ROLE_KEY=your_service_role_key
+
+# Stripe
+STRIPE_SECRET_KEY=sk_test_...
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_...
+STRIPE_PRO_PRICE_ID=price_...
+STRIPE_ENTERPRISE_PRICE_ID=price_...
+STRIPE_WEBHOOK_SECRET=whsec_...
+
+# OpenAI
+OPENAI_API_KEY=sk-...
+
+# Services
+AI_SERVICE_URL=https://your-ai-service.render.com
+NEXT_PUBLIC_URL=https://your-app.vercel.app
+
+# Email
+RESEND_API_KEY=re_...</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">2. Configuration Vercel</h3>
+                <div class="code-block">
+<pre>// vercel.json
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": ".next",
+  "framework": "nextjs",
+  "functions": {
+    "app/api/*/route.ts": {
+      "maxDuration": 30
+    }
+  },
+  "env": {
+    "NEXT_PUBLIC_SUPABASE_URL": "@supabase-url",
+    "NEXT_PUBLIC_SUPABASE_ANON_KEY": "@supabase-anon-key"
+  }
+}</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">3. Dockerfile pour Microservice IA</h3>
+                <div class="code-block">
+<pre># microservices/ai-service/Dockerfile
+FROM python:3.11-slim
+
+WORKDIR /app
+
+# Installer dépendances système
+RUN apt-get update && apt-get install -y \
+    gcc \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copier requirements
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copier code
+COPY . .
+
+# Exposer port
+EXPOSE 5000
+
+# Variables d'environnement
+ENV FLASK_APP=app.py
+ENV FLASK_ENV=production
+
+# Commande de démarrage
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "--workers", "2", "app:app"]</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">4. Script de Déploiement</h3>
+                <div class="code-block">
+<pre>#!/bin/bash
+# deploy.sh
+
+echo "🚀 Déploiement ShipFast"
+
+# 1. Vérifier les variables d'environnement
+if [ -z "$SUPABASE_URL" ]; then
+  echo "❌ SUPABASE_URL manquante"
+  exit 1
+fi
+
+# 2. Build et test
+echo "📦 Build du projet..."
+npm run build
+npm run test
+
+# 3. Déployer sur Vercel
+echo "🌐 Déploiement Vercel..."
+vercel --prod
+
+# 4. Déployer microservice IA
+echo "🤖 Déploiement service IA..."
+cd microservices/ai-service
+docker build -t shipfast-ai .
+docker tag shipfast-ai your-registry/shipfast-ai:latest
+docker push your-registry/shipfast-ai:latest
+
+# 5. Migrations DB si nécessaire
+echo "🗄️ Migrations database..."
+npx supabase db push
+
+echo "✅ Déploiement terminé !"
+echo "🔗 App: https://your-app.vercel.app"</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scripts d'installation -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-download text-blue-600"></i> Installation et Setup
+            </h2>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">1. Setup Rapide (1 commande)</h3>
+                <div class="code-block">
+<pre># Cloner et installer
+git clone https://github.com/votre-username/mon-shipfast.git
+cd mon-shipfast
+npm install
+
+# Copier variables d'environnement
+cp .env.example .env.local
+
+# Setup Supabase local (optionnel)
+npx supabase start
+
+# Lancer en dev
+npm run dev
+
+# Ouvrir http://localhost:3000</pre>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <h3 class="text-lg font-semibold mb-2">2. Package.json Scripts</h3>
+                <div class="code-block">
+<pre>{
+  "name": "mon-shipfast",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "db:generate": "npx prisma generate",
+    "db:push": "npx prisma db push",
+    "ai:dev": "cd microservices/ai-service && python app.py",
+    "setup": "npm install && npm run db:generate",
+    "deploy": "./deploy.sh"
+  },
+  "dependencies": {
+    "next": "14.0.0",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@supabase/supabase-js": "^2.38.0",
+    "stripe": "^14.0.0",
+    "@stripe/stripe-js": "^2.1.0",
+    "tailwindcss": "^3.3.0",
+    "@radix-ui/react-*": "latest",
+    "lucide-react": "^0.290.0",
+    "zod": "^3.22.0",
+    "react-hook-form": "^7.47.0",
+    "@hookform/resolvers": "^3.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.0",
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.0",
+    "eslint": "^8.51.0",
+    "eslint-config-next": "14.0.0",
+    "jest": "^29.7.0",
+    "@testing-library/react": "^13.4.0",
+    "autoprefixer": "^10.4.0",
+    "postcss": "^8.4.0"
+  }
+}</pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- Monitoring et Analytics -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-chart-line text-green-600"></i> Monitoring et Analytics
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-4">
+                <div class="feature-card">
+                    <h4 class="font-semibold text-blue-600 mb-2">
+                        <i class="fas fa-bug"></i> Error Tracking (Sentry)
+                    </h4>
+                    <div class="code-block">
+<pre>// lib/sentry.ts
+import * as Sentry from '@sentry/nextjs'
+
+Sentry.init({
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+  environment: process.env.NODE_ENV,
+})
+
+export { Sentry }</pre>
+                    </div>
+                </div>
+
+                <div class="feature-card">
+                    <h4 class="font-semibold text-green-600 mb-2">
+                        <i class="fas fa-analytics"></i> User Analytics
+                    </h4>
+                    <div class="code-block">
+<pre>// lib/analytics.ts
+export const trackEvent = (event: string, properties?: any) => {
+  if (typeof window !== 'undefined') {
+    // Google Analytics
+    gtag('event', event, properties)
+
+    // Supabase Analytics
+    supabase.from('events').insert({
+      event_name: event,
+      properties,
+      user_id: getCurrentUserId(),
+      timestamp: new Date().toISOString()
+    })
+  }
+}</pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conseils YC et Best Practices -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-lightbulb text-yellow-600"></i> Conseils YC et Best Practices
+            </h2>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-yellow-50 p-6 rounded-lg border border-yellow-200">
+                    <h3 class="font-semibold text-yellow-800 mb-3">
+                        <i class="fas fa-rocket"></i> Ship Fast Philosophy
+                    </h3>
+                    <ul class="space-y-2 text-sm text-yellow-700">
+                        <li>• Lancez un MVP en 1-2 semaines maximum</li>
+                        <li>• Testez avec 10-20 utilisateurs réels rapidement</li>
+                        <li>• Mesurez TOUT : acquisition, engagement, retention</li>
+                        <li>• Itérez basé sur les données, pas les opinions</li>
+                        <li>• Focus sur la valeur utilisateur, pas les features</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                    <h3 class="font-semibold text-blue-800 mb-3">
+                        <i class="fas fa-users"></i> User-Centric Approach
+                    </h3>
+                    <ul class="space-y-2 text-sm text-blue-700">
+                        <li>• Parlez à vos utilisateurs chaque semaine</li>
+                        <li>• Intégrez feedback directement dans le produit</li>
+                        <li>• Surveillez les métriques d'engagement quotidiennement</li>
+                        <li>• Simplifiez l'onboarding au maximum</li>
+                        <li>• Automatisez les tâches répétitives</li>
+                    </ul>
+                </div>
+
+                <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                    <h3 class="font-semibold text-green-800 mb-3">
+                        <i class="fas fa-dollar-sign"></i> Monetization Strategy
+                    </h3>
+                    <ul class="space-y-2 text-sm text-green-700">
+                        <li>• Implémentez les paiements dès le MVP</li>
+                        <li>• Testez différents pricing rapidement</li>
+                        <li>• Free tier pour acquisition, payant pour valeur</li>
+                        <li>• Mesurez LTV vs CAC constamment</li>
+                        <li>• Optimisez funnel de conversion</li>
+                    </ul>
+                </div>
+
+                <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
+                    <h3 class="font-semibold text-purple-800 mb-3">
+                        <i class="fas fa-cogs"></i> Technical Excellence
+                    </h3>
+                    <ul class="space-y-2 text-sm text-purple-700">
+                        <li>• Monitoring et alertes dès le jour 1</li>
+                        <li>• Tests automatisés pour features critiques</li>
+                        <li>• Performance optimisée (< 3s load time)</li>
+                        <li>• Sécurité intégrée (auth, HTTPS, validation)</li>
+                        <li>• Scalabilité serverless par défaut</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap et Extensions -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                <i class="fas fa-road text-purple-600"></i> Roadmap et Extensions Futures
+            </h2>
+
+            <div class="space-y-4">
+                <div class="bg-white p-4 rounded-lg border-l-4 border-blue-500">
+                    <h4 class="font-semibold text-blue-600 mb-2">Phase 1 : Core MVP (Semaines 1-2)</h4>
+                    <p class="text-sm text-gray-600">Auth + Dashboard + Paiements + IA basique + Déploiement</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border-l-4 border-green-500">
+                    <h4 class="font-semibold text-green-600 mb-2">Phase 2 : Growth Features (Semaines 3-4)</h4>
+                    <p class="text-sm text-gray-600">Analytics avancées + A/B testing + Email automation + API publique</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border-l-4 border-yellow-500">
+                    <h4 class="font-semibold text-yellow-600 mb-2">Phase 3 : Scale & Advanced IA (Mois 2-3)</h4>
+                    <p class="text-sm text-gray-600">Multi-tenant + Advanced AI agents + Marketplace + Mobile app</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg border-l-4 border-purple-500">
+                    <h4 class="font-semibold text-purple-600 mb-2">Phase 4 : Futuriste (Mois 4+)</h4>
+                    <p class="text-sm text-gray-600">Blockchain integration + AR/VR features + Voice interfaces + Global expansion</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusion -->
+        <section class="mb-8">
+            <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-8 rounded-lg text-center">
+                <h2 class="text-2xl font-bold mb-4">
+                    <i class="fas fa-flag-checkered"></i> Prêt à Lancer Votre SaaS ?
+                </h2>
+                <p class="text-lg mb-6">
+                    Avec Mon ShipFast, vous avez tout ce qu'il faut pour développer et lancer un SaaS en quelques semaines.
+                    Focus sur votre valeur unique, nous nous occupons du reste.
+                </p>
+                <div class="flex justify-center space-x-4 text-sm">
+                    <div class="bg-white bg-opacity-20 px-4 py-2 rounded">
+                        <i class="fas fa-clock"></i> Setup en 5 minutes
+                    </div>
+                    <div class="bg-white bg-opacity-20 px-4 py-2 rounded">
+                        <i class="fas fa-dollar-sign"></i> Budget < 5k€
+                    </div>
+                    <div class="bg-white bg-opacity-20 px-4 py-2 rounded">
+                        <i class="fas fa-users"></i> YC-Ready
+                    </div>
+                    <div class="bg-white bg-opacity-20 px-4 py-2 rounded">
+                        <i class="fas fa-robot"></i> IA-Native
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center text-gray-500 text-sm mt-12 pt-8 border-t">
+            <p>Mon ShipFast - Framework SaaS YC-Style | Open Source MIT License</p>
+            <p class="mt-2">Développez votre SaaS en jours, pas en mois 🚀</p>
+        </footer>
+
+    </div>
+</body>
+</html>
