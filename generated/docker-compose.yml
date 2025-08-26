@@ -1,0 +1,99 @@
+version: '3.8'
+
+services:
+  # Backend Laravel
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: startup_backend
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./backend:/var/www
+      - ./backend/vendor:/var/www/vendor
+    networks:
+      - startup_network
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_HOST=mysql
+      - DB_DATABASE=startup_db
+      - DB_USERNAME=startup_user
+      - DB_PASSWORD=startup_password
+    depends_on:
+      - mysql
+      - redis
+
+  # Frontend React
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: startup_frontend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    networks:
+      - startup_network
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000/api
+      - CHOKIDAR_USEPOLLING=true
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: startup_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
+    networks:
+      - startup_network
+    depends_on:
+      - backend
+      - frontend
+
+  # MySQL Database
+  mysql:
+    image: mysql:8.0
+    container_name: startup_mysql
+    restart: unless-stopped
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./mysql/init:/docker-entrypoint-initdb.d
+    networks:
+      - startup_network
+    environment:
+      - MYSQL_DATABASE=startup_db
+      - MYSQL_USER=startup_user
+      - MYSQL_PASSWORD=startup_password
+      - MYSQL_ROOT_PASSWORD=root_password
+
+  # Redis Cache
+  redis:
+    image: redis:alpine
+    container_name: startup_redis
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    networks:
+      - startup_network
+
+volumes:
+  mysql_data:
+  redis_data:
+
+networks:
+  startup_network:
+    driver: bridge
