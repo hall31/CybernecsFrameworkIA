@@ -103,7 +103,7 @@ health_check() {
     sleep 30
     
     # Vérification du backend
-    if curl -f http://localhost:8000/health &> /dev/null; then
+    if curl -f ${PROTOCOL}://localhost:8000/health &> /dev/null; then
         echo -e "${GREEN}✅ Backend opérationnel${NC}"
     else
         echo -e "${RED}❌ Backend non accessible${NC}"
