@@ -129,8 +129,11 @@ class TreasuryAgent:
     """Agent de gestion de trésorerie DAO"""
     
     def __init__(self):
-        self.w3 = Web3(Web3.HTTPProvider(os.getenv('ETHEREUM_RPC_URL', 'http://localhost:8545')))
-        self.account = Account.from_key(os.getenv('PRIVATE_KEY', '0x' + '0' * 64))
+        private_key = os.getenv('PRIVATE_KEY')
+        if not private_key:
+            logger.error("❌ PRIVATE_KEY environment variable is not set. Exiting for security reasons.")
+            raise RuntimeError("PRIVATE_KEY environment variable is required but not set.")
+        self.account = Account.from_key(private_key)
         
     def run(self, project_id: str, dao_address: str) -> Dict[str, Any]:
         """Déploie et configure la trésorerie DAO"""
