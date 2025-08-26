@@ -45,7 +45,7 @@ const Logs = ({ projectId }) => {
           const data = JSON.parse(event.data);
           handleWebSocketMessage(data);
         } catch (error) {
-          console.error('Erreur lors du parsing du message WebSocket:', error);
+          console.error('Error parsing WebSocket message:', error);
         }
       };
 
