@@ -1,0 +1,110 @@
+version: '3.8'
+
+services:
+  startupai-backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: startupai-backend
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=production
+      - DEBUG=false
+      - LOG_LEVEL=INFO
+      - API_HOST=0.0.0.0
+      - API_PORT=8000
+      - CORS_ORIGINS=*
+      - RATE_LIMIT=100
+      - MAX_CONCURRENT_EVALUATIONS=10
+      - EVALUATION_TIMEOUT=300
+      - CACHE_TTL=3600
+      - VC_MULTIPLE_SAAS=8.0
+      - VC_MULTIPLE_MARKETPLACE=6.0
+      - VC_MULTIPLE_FINTECH=10.0
+      - VC_MULTIPLE_AI=12.0
+      - VC_MULTIPLE_DEFAULT=7.0
+      - INVESTMENT_MRR_MIN=5000
+      - INVESTMENT_CAC_MAX=100
+      - INVESTMENT_LTV_MIN=300
+      - INVESTMENT_CHURN_MAX=0.05
+    volumes:
+      - ./logs:/app/logs
+      - ./data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - startupai-network
+
+  startupai-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: startupai-frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000
+      - NODE_ENV=production
+    depends_on:
+      - startupai-backend
+    restart: unless-stopped
+    networks:
+      - startupai-network
+
+  # Service de monitoring (optionnel)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: startupai-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+      - '--web.console.libraries=/etc/prometheus/console_libraries'
+      - '--web.console.templates=/etc/prometheus/consoles'
+      - '--storage.tsdb.retention.time=200h'
+      - '--web.enable-lifecycle'
+    restart: unless-stopped
+    networks:
+      - startupai-network
+
+  # Service de visualisation des métriques (optionnel)
+  grafana:
+    image: grafana/grafana:latest
+    container_name: startupai-grafana
+    ports:
+      - "3001:3000"
+    environment:
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
+    restart: unless-stopped
+    depends_on:
+      - prometheus
+    networks:
+      - startupai-network
+
+volumes:
+  prometheus_data:
+    driver: local
+  grafana_data:
+    driver: local
+
+networks:
+  startupai-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16
