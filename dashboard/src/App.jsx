@@ -3,9 +3,11 @@ import Sidebar from "./components/Sidebar";
 import Topbar from "./components/Topbar";
 import RoadmapCard from "./components/RoadmapCard";
 import LogStream from "./components/LogStream";
+import Orchestration from "./pages/Orchestration";
 import FundsPage from "./components/FundsPage";
 
 function App() {
+  const [currentPage, setCurrentPage] = useState("home");
   const [idea, setIdea] = useState("");
   const [roadmap, setRoadmap] = useState(null);
   const [currentPage, setCurrentPage] = useState("home");
@@ -22,6 +24,10 @@ function App() {
 
   const renderPage = () => {
     switch (currentPage) {
+      case "home":
+        return (
+          <>
+            <h1 className="text-2xl font-bold mb-4">🚀 Startup Factory Dashboard</h1>
       case "funds":
         return <FundsPage />;
       case "home":
@@ -58,12 +64,54 @@ function App() {
               <LogStream />
             </div>
           </>
+        )     
+      case "roadmap":
+        return (
+          <>
+            <h1 className="text-2xl font-bold mb-4">📋 Roadmap</h1>
+            {roadmap ? (
+              <div className="grid gap-4 md:grid-cols-2">
+                {roadmap.epics.map((epic, idx) => (
+                  <RoadmapCard key={idx} epic={epic} />
+                ))}
+              </div>
+            ) : (
+              <div className="text-center py-12 text-gray-500">
+                <span className="text-4xl mb-4 block">📋</span>
+                <p>Aucune roadmap générée</p>
+                <p className="text-sm mt-2">Retournez à la page d'accueil pour créer une startup</p>
+              </div>
+            )}
+          </>
+        );
+      
+      case "orchestration":
+        return <Orchestration />;
+      
+      case "logs":
+        return (
+          <>
+            <h1 className="text-2xl font-bold mb-4">📊 Logs</h1>
+            <LogStream />
+          </>
+        );
+      
+      default:
+        return (
+          <div className="text-center py-12 text-gray-500">
+            <span className="text-4xl mb-4 block">❓</span>
+            <p>Page non trouvée</p>
+          </div>
         );
     }
   };
 
   return (
     <div className="flex h-screen bg-gray-100">
+      <Sidebar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      <div className="flex-1 flex flex-col">
+        <Topbar />
+        <div className="p-6 overflow-auto">
       <Sidebar onPageChange={setCurrentPage} />
       <div className="flex-1 flex flex-col">
         <Topbar />
