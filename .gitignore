@@ -18,9 +18,28 @@ ENV/
 node_modules/
 *.log
 
+# Python
+__pycache__/
+*.py[cod]
+*$.py.class
+
+# Virtualenv
+.env
+.venv
+ENV/
+env/
+venv/
+
+# Editors
+.vscode/
+.idea/
+
 # OS
 .DS_Store
 Thumbs.db
 
 # Generated content
 generated/legal/*.md
+# Node
+node_modules/
+**/node_modules/

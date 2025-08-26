@@ -13,3 +13,19 @@ typing-extensions>=4.0.0
 
 # JSON (inclus dans Python standard)
 # json
+
+fastapi==0.104.1
+uvicorn==0.24.0
+python-dotenv==1.0.0
+requests==2.31.0
+PyGithub==1.59.1
+stripe==7.8.0
+linkedin-api==2.0.0
+google-ads==23.1.0
+pydantic==2.5.0
+python-multipart==0.0.6
+aiofiles==23.2.1
+Flask==2.3.3
+Flask-CORS==4.0.0
+Werkzeug==2.3.7
+python-dateutil==2.8.2
