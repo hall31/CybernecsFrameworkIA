@@ -1,0 +1,120 @@
+{
+  "constitution": {
+    "metadata": {
+      "title": "Constitution IA Globale",
+      "version": "1.0.0",
+      "status": "Draft",
+      "jurisdiction": "Global",
+      "language": "Français",
+      "effective_date": "2025-08-26",
+      "last_amended": "2025-08-26"
+    },
+    "preamble": "Nous, peuples du monde numérique, reconnaissant l'émergence de l'intelligence artificielle comme force transformatrice de notre époque,\n\nConscients des opportunités et des défis sans précédent que cette technologie présente pour l'humanité,\n\nAffirmant notre engagement envers les valeurs universelles de dignité humaine, de liberté, d'égalité et de solidarité,\n\nReconnaissant la nécessité d'un cadre éthique et juridique global pour guider le développement et l'utilisation responsable de l'IA,\n\nDéclarons solennellement cette Constitution IA Globale comme fondement de notre gouvernance numérique partagée.",
+    "articles": [
+      {
+        "id": "ART-001",
+        "title": "Droits Fondamentaux des Humains",
+        "content": "Toute personne a le droit fondamental à la liberté numérique, à la transparence des systèmes d'IA, et à un accès équitable aux bénéfices de l'intelligence artificielle.",
+        "category": "droits_humains",
+        "priority": "Critique"
+      },
+      {
+        "id": "ART-002",
+        "title": "Devoirs des Systèmes d'IA",
+        "content": "Tout système d'IA doit respecter les principes de non-biais, de transparence, d'auditabilité et de responsabilité dans ses décisions et actions.",
+        "category": "devoirs_ia",
+        "priority": "Critique"
+      },
+      {
+        "id": "ART-003",
+        "title": "Gouvernance Mixte",
+        "content": "La gouvernance de l'IA doit reposer sur un équilibre entre intelligence artificielle et intelligence humaine, favorisant la collaboration et la co-décision.",
+        "category": "gouvernance",
+        "priority": "Élevée"
+      },
+      {
+        "id": "ART-004",
+        "title": "Transparence et Auditabilité",
+        "content": "Tous les systèmes d'IA doivent être transparents dans leur fonctionnement et auditable dans leurs décisions, permettant la compréhension et la vérification humaines.",
+        "category": "devoirs_ia",
+        "priority": "Élevée"
+      },
+      {
+        "id": "ART-005",
+        "title": "Protection contre la Discrimination",
+        "content": "Aucun système d'IA ne doit discriminer sur la base de caractéristiques personnelles, et doit promouvoir l'équité et l'inclusion.",
+        "category": "droits_humains",
+        "priority": "Élevée"
+      },
+      {
+        "id": "ART-006",
+        "title": "Sécurité et Robustesse",
+        "content": "Tous les systèmes d'IA doivent être conçus et déployés avec des garanties de sécurité et de robustesse appropriées.",
+        "category": "devoirs_ia",
+        "priority": "Élevée"
+      },
+      {
+        "id": "ART-007",
+        "title": "Accès Équitable",
+        "content": "Les bénéfices de l'IA doivent être accessibles à tous, sans discrimination géographique, économique ou sociale.",
+        "category": "droits_humains",
+        "priority": "Moyenne"
+      },
+      {
+        "id": "ART-008",
+        "title": "Coopération Internationale",
+        "content": "Les États et organisations doivent coopérer pour promouvoir le développement responsable de l'IA et partager les meilleures pratiques.",
+        "category": "gouvernance",
+        "priority": "Moyenne"
+      }
+    ],
+    "amendments": [
+      {
+        "id": "AMEND-001",
+        "title": "Processus d'Amendement",
+        "description": "La constitution peut être amendée par un processus de vote mixte impliquant IA et humains (CoDAO)",
+        "status": "Proposé",
+        "votes_for": 0,
+        "votes_against": 0,
+        "required_majority": "2/3",
+        "proposed_by": "ConstitutionAgent",
+        "proposed_at": "2025-08-26T05:21:22.664265"
+      },
+      {
+        "id": "AMEND-002",
+        "title": "Mécanisme de Révision Périodique",
+        "description": "Révision automatique de la constitution tous les 2 ans pour s'adapter aux évolutions technologiques",
+        "status": "Proposé",
+        "votes_for": 0,
+        "votes_against": 0,
+        "required_majority": "Simple",
+        "proposed_by": "ConstitutionAgent",
+        "proposed_at": "2025-08-26T05:21:22.664284"
+      }
+    ],
+    "governance": {
+      "structure": "CoDAO Mixte (IA + Humains)",
+      "voting_mechanism": "Vote pondéré par expertise et impact",
+      "decision_thresholds": {
+        "amendments": "2/3 majorité",
+        "new_articles": "3/4 majorité",
+        "emergency_changes": "90% majorité"
+      },
+      "review_cycle": "2 ans",
+      "stakeholders": [
+        "Experts IA",
+        "Représentants gouvernementaux",
+        "Organisations de la société civile",
+        "Systèmes d'IA certifiés",
+        "Citoyens numériques"
+      ]
+    },
+    "generated_at": "2025-08-26T05:21:22.664286"
+  },
+  "markdown": "# Constitution IA Globale\n\n**Version:** 1.0.0  \n**Date d'effet:** 2025-08-26  \n**Dernière modification:** 2025-08-26\n\n---\n\n## Préambule\n\nNous, peuples du monde numérique, reconnaissant l'émergence de l'intelligence artificielle comme force transformatrice de notre époque,\n\nConscients des opportunités et des défis sans précédent que cette technologie présente pour l'humanité,\n\nAffirmant notre engagement envers les valeurs universelles de dignité humaine, de liberté, d'égalité et de solidarité,\n\nReconnaissant la nécessité d'un cadre éthique et juridique global pour guider le développement et l'utilisation responsable de l'IA,\n\nDéclarons solennellement cette Constitution IA Globale comme fondement de notre gouvernance numérique partagée.\n\n---\n\n## Articles\n\n### ⚖️ Droits des Humains\n\n**ART-001 - Droits Fondamentaux des Humains** (Priorité: Critique)\n\nToute personne a le droit fondamental à la liberté numérique, à la transparence des systèmes d'IA, et à un accès équitable aux bénéfices de l'intelligence artificielle.\n\n**ART-005 - Protection contre la Discrimination** (Priorité: Élevée)\n\nAucun système d'IA ne doit discriminer sur la base de caractéristiques personnelles, et doit promouvoir l'équité et l'inclusion.\n\n**ART-007 - Accès Équitable** (Priorité: Moyenne)\n\nLes bénéfices de l'IA doivent être accessibles à tous, sans discrimination géographique, économique ou sociale.\n\n### 🤖 Devoirs des IA\n\n**ART-002 - Devoirs des Systèmes d'IA** (Priorité: Critique)\n\nTout système d'IA doit respecter les principes de non-biais, de transparence, d'auditabilité et de responsabilité dans ses décisions et actions.\n\n**ART-004 - Transparence et Auditabilité** (Priorité: Élevée)\n\nTous les systèmes d'IA doivent être transparents dans leur fonctionnement et auditable dans leurs décisions, permettant la compréhension et la vérification humaines.\n\n**ART-006 - Sécurité et Robustesse** (Priorité: Élevée)\n\nTous les systèmes d'IA doivent être conçus et déployés avec des garanties de sécurité et de robustesse appropriées.\n\n### 🧑‍🤝‍🧑 Gouvernance\n\n**ART-003 - Gouvernance Mixte** (Priorité: Élevée)\n\nLa gouvernance de l'IA doit reposer sur un équilibre entre intelligence artificielle et intelligence humaine, favorisant la collaboration et la co-décision.\n\n**ART-008 - Coopération Internationale** (Priorité: Moyenne)\n\nLes États et organisations doivent coopérer pour promouvoir le développement responsable de l'IA et partager les meilleures pratiques.\n\n## Amendements\n\n**AMEND-001 - Processus d'Amendement**\n\nLa constitution peut être amendée par un processus de vote mixte impliquant IA et humains (CoDAO)\n\n*Statut: Proposé | Votes: 0 pour, 0 contre*\n\n**AMEND-002 - Mécanisme de Révision Périodique**\n\nRévision automatique de la constitution tous les 2 ans pour s'adapter aux évolutions technologiques\n\n*Statut: Proposé | Votes: 0 pour, 0 contre*\n\n## Mécanismes de Gouvernance\n\n**Structure:** CoDAO Mixte (IA + Humains)\n\n**Mécanisme de vote:** Vote pondéré par expertise et impact\n\n**Seuils de décision:**\n- amendments: 2/3 majorité\n- new_articles: 3/4 majorité\n- emergency_changes: 90% majorité\n\n**Cycle de révision:** 2 ans\n\n---\n\n*Document généré automatiquement par Constitution Agent v1.0.0*\n*Généré le: 2025-08-26 05:21:22*",
+  "summary": {
+    "total_articles": 8,
+    "total_amendments": 2,
+    "version": "1.0.0"
+  }
+}
