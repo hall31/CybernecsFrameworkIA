@@ -21,7 +21,7 @@ const Startups = () => {
       const response = await axios.get(`${API_BASE_URL}/projects`);
       setProjects(response.data);
     } catch (error) {
-      console.error('Erreur lors de la récupération des projets:', error);
+      console.error('Error fetching projects:', error);
     } finally {
       setLoading(false);
     }
