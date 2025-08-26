@@ -689,9 +689,9 @@ if __name__ == '__main__':
     logger.info("🌐 Serveur démarré sur http://localhost:5000")
     
     app.run(
-        host='0.0.0.0',
+        host='127.0.0.1',
         port=5000,
-        debug=True
+        debug=False
     )
     logger.info("Démarrage de l'AI Portfolio Manager API")
     logger.info("Endpoints disponibles:")
