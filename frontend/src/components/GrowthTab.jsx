@@ -167,7 +167,7 @@ const GrowthTab = ({ data }) => {
         {/* Tools Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {data.suggested_tools?.map((category) => {
-            if (selectedCategory !== 'all' && category.category.toLowerCase().includes(selectedCategory)) {
+            if (selectedCategory !== 'all' && !category.category.toLowerCase().includes(selectedCategory)) {
               return null;
             }
             return (
