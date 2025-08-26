@@ -22,6 +22,8 @@ def create_startup():
     try:
         # Récupération de l'idée depuis la requête
         data = request.get_json()
+        if data is None:
+            return jsonify({"error": "Le corps de la requête doit être un JSON valide."}), 400
         idea = data.get('idea', '')
         
         if not idea:
