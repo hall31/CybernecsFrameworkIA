@@ -59,7 +59,7 @@ class StartupOrchestrator:
                 "frontend": frontend,
                 "marketing": marketing,
                 "finance": finance,
-                "legal": legal.get("generated_files", []) if legal.get("status") == "success" else [],
+                "legal": self._extract_legal_files(legal),
                 "growth": growth,
                 "generated_at": "2024-08-19",
                 "status": "success"
