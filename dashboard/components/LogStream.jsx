@@ -20,7 +20,11 @@ const LogStream = () => {
   useEffect(() => {
     const connectWebSocket = () => {
       try {
-        const websocket = new WebSocket('ws://localhost:8000/ws/logs');
+        const wsUrl = process.env.NEXT_PUBLIC_WS_LOGS_URL || 'ws://localhost:8000/ws/logs';
+        if (!process.env.NEXT_PUBLIC_WS_LOGS_URL) {
+          console.warn('NEXT_PUBLIC_WS_LOGS_URL is not set. Falling back to ws://localhost:8000/ws/logs');
+        }
+        const websocket = new WebSocket(wsUrl);
         
         websocket.onopen = () => {
           setIsConnected(true);
