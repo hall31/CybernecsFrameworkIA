@@ -1,94 +1,64 @@
-.PHONY: help install test run build up down logs clean
+# Makefile pour l'API Admin FastAPI
+# Usage: make <command>
+
+.PHONY: help start test install clean docs
 
 # Variables
-PYTHON = python3
-PIP = pip3
-DOCKER = docker
-COMPOSE = docker-compose
+VENV = venv
+PYTHON = $(VENV)/bin/python
+PIP = $(VENV)/bin/pip
+API_PORT = 8000
 
-# Couleurs pour l'affichage
-GREEN = \033[0;32m
-YELLOW = \033[1;33m
-BLUE = \033[0;34m
-RED = \033[0;31m
-NC = \033[0m # No Color
-
-help: ## Affiche cette aide
-	@echo "$(BLUE)🧩 Core Engine - Startup Orchestrator$(NC)"
+help: ## Affiche l'aide
+	@echo "🚀 API Admin FastAPI - Commandes disponibles:"
 	@echo ""
-	@echo "$(YELLOW)Commandes disponibles:$(NC)"
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "  $(GREEN)%-15s$(NC) %s\n", $$1, $$2}'
+	@echo "  make start     - Démarre l'API admin"
+	@echo "  make test      - Lance tous les tests"
+	@echo "  make install   - Installe les dépendances"
+	@echo "  make clean     - Nettoie les fichiers temporaires"
+	@echo "  make docs      - Ouvre la documentation"
+	@echo "  make status    - Vérifie le statut de l'API"
+	@echo ""
 
-install: ## Installe les dépendances Python
-	@echo "$(BLUE)📦 Installation des dépendances...$(NC)"
-	$(PYTHON) -m pip install -r requirements.txt
+install: ## Installe les dépendances
+	@echo "📦 Installation des dépendances..."
+	python3 -m venv $(VENV)
+	$(PIP) install -r requirements.txt
+	@echo "✅ Dépendances installées !"
 
-test-local: ## Teste le CEO Agent localement
-	@echo "$(BLUE)🧪 Test local du CEO Agent...$(NC)"
-	$(PYTHON) test_local.py
+start: ## Démarre l'API admin
+	@echo "🚀 Démarrage de l'API Admin FastAPI..."
+	@echo "📍 Port: $(API_PORT)"
+	@echo "📚 Documentation: http://localhost:$(API_PORT)/docs"
+	@echo "=" * 50
+	$(PYTHON) launch_admin_api.py
 
-test-api: ## Teste l'API (nécessite que l'API soit en cours d'exécution)
-	@echo "$(BLUE)🧪 Test de l'API...$(NC)"
-	$(PYTHON) test_api.py
-
-run: ## Lance l'application FastAPI localement
-	@echo "$(BLUE)🚀 Lancement de l'application...$(NC)"
-	$(PYTHON) main.py
-
-build: ## Construit l'image Docker
-	@echo "$(BLUE)🐳 Construction de l'image Docker...$(NC)"
-	$(DOCKER) build -t core-engine .
-
-up: ## Lance les services avec Docker Compose
-	@echo "$(BLUE)🚀 Lancement des services...$(NC)"
-	$(COMPOSE) up -d
-
-up-build: ## Lance les services avec rebuild
-	@echo "$(BLUE)🚀 Lancement des services avec rebuild...$(NC)"
-	$(COMPOSE) up --build -d
-
-down: ## Arrête les services Docker Compose
-	@echo "$(BLUE)🛑 Arrêt des services...$(NC)"
-	$(COMPOSE) down
-
-logs: ## Affiche les logs des services
-	@echo "$(BLUE)📝 Affichage des logs...$(NC)"
-	$(COMPOSE) logs -f
+test: ## Lance tous les tests
+	@echo "🧪 Lancement des tests..."
+	$(PYTHON) test_admin_api.py
 
 clean: ## Nettoie les fichiers temporaires
-	@echo "$(BLUE)🧹 Nettoyage...$(NC)"
+	@echo "🧹 Nettoyage..."
 	find . -type f -name "*.pyc" -delete
 	find . -type d -name "__pycache__" -delete
-	find . -type f -name "*.log" -delete
+	@echo "✅ Nettoyage terminé !"
 
-status: ## Affiche le statut des services
-	@echo "$(BLUE)📊 Statut des services...$(NC)"
-	$(COMPOSE) ps
+docs: ## Ouvre la documentation
+	@echo "📚 Ouverture de la documentation..."
+	@echo "🌐 Documentation Swagger: http://localhost:$(API_PORT)/docs"
+	@echo "🌐 Documentation ReDoc: http://localhost:$(API_PORT)/redoc"
 
-restart: ## Redémarre les services
-	@echo "$(BLUE)🔄 Redémarrage des services...$(NC)"
-	$(COMPOSE) restart
+status: ## Vérifie le statut de l'API
+	@echo "🏥 Vérification du statut de l'API..."
+	@curl -s http://localhost:$(API_PORT)/health | python3 -m json.tool 2>/dev/null || echo "❌ API non accessible sur le port $(API_PORT)"
 
-shell: ## Ouvre un shell dans le container
-	@echo "$(BLUE)🐚 Ouverture du shell...$(NC)"
-	$(COMPOSE) exec core-engine /bin/bash
+agents: ## Liste tous les agents
+	@echo "🤖 Liste des agents..."
+	@curl -s http://localhost:$(API_PORT)/agents | python3 -m json.tool 2>/dev/null || echo "❌ API non accessible sur le port $(API_PORT)"
 
-# Commandes de développement
-dev-install: install ## Installation pour le développement
-	@echo "$(GREEN)✅ Installation terminée$(NC)"
+epics: ## Liste toutes les épics
+	@echo "📋 Liste des épics..."
+	@curl -s http://localhost:$(API_PORT)/epics | python3 -m json.tool 2>/dev/null || echo "❌ API non accessible sur le port $(API_PORT)"
 
-dev-test: test-local ## Tests de développement
-	@echo "$(GREEN)✅ Tests terminés$(NC)"
-
-dev-run: run ## Lancement en mode développement
-	@echo "$(GREEN)✅ Application lancée$(NC)"
-
-# Commandes de production
-prod-build: build ## Build de production
-	@echo "$(GREEN)✅ Build terminé$(NC)"
-
-prod-up: up-build ## Déploiement en production
-	@echo "$(GREEN)✅ Déploiement terminé$(NC)"
-
-prod-down: down ## Arrêt de production
-	@echo "$(GREEN)✅ Arrêt terminé$(NC)"
+# Commande par défaut
+.DEFAULT_GOAL := help
