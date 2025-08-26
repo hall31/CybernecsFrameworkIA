@@ -4,11 +4,13 @@ import Topbar from "./components/Topbar";
 import RoadmapCard from "./components/RoadmapCard";
 import LogStream from "./components/LogStream";
 import Orchestration from "./pages/Orchestration";
+import FundsPage from "./components/FundsPage";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
   const [idea, setIdea] = useState("");
   const [roadmap, setRoadmap] = useState(null);
+  const [currentPage, setCurrentPage] = useState("home");
 
   const handleLaunch = async () => {
     const res = await fetch("http://localhost:8000/create-startup", {
@@ -26,7 +28,12 @@ function App() {
         return (
           <>
             <h1 className="text-2xl font-bold mb-4">🚀 Startup Factory Dashboard</h1>
-
+      case "funds":
+        return <FundsPage />;
+      case "home":
+      default:
+        return (
+          <>
             <div className="bg-white shadow-md rounded-2xl p-6 mb-6">
               <h2 className="text-lg font-semibold mb-2">Nouvelle idée</h2>
               <div className="flex gap-2">
@@ -57,8 +64,7 @@ function App() {
               <LogStream />
             </div>
           </>
-        );
-      
+        )     
       case "roadmap":
         return (
           <>
@@ -106,6 +112,11 @@ function App() {
       <div className="flex-1 flex flex-col">
         <Topbar />
         <div className="p-6 overflow-auto">
+      <Sidebar onPageChange={setCurrentPage} />
+      <div className="flex-1 flex flex-col">
+        <Topbar />
+        <div className="p-6 overflow-auto">
+          <h1 className="text-2xl font-bold mb-4">🚀 Startup Factory Dashboard</h1>
           {renderPage()}
         </div>
       </div>

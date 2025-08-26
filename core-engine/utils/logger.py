@@ -1,3 +1,76 @@
+from datetime import datetime
+import logging
+import asyncio
+from datetime import datetime
+from uuid import UUID
+from typing import Optional
+from core.database import AsyncSessionLocal
+from api.crud import LogCRUD
+from api.schemas import LogCreate
+
+class DatabaseLogger:
+    def __init__(self):
+        self.logger = logging.getLogger(__name__)
+        self.logger.setLevel(logging.INFO)
+        
+        # Console handler
+        console_handler = logging.StreamHandler()
+        console_handler.setLevel(logging.INFO)
+        
+        # Formatter
+        formatter = logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        )
+        console_handler.setFormatter(formatter)
+        
+        self.logger.addHandler(console_handler)
+    
+    async def log_to_db(self, project_id: UUID, message: str, level: str = "INFO"):
+        try:
+            async with AsyncSessionLocal() as db:
+                log_data = LogCreate(
+                    project_id=project_id,
+                    message=f"[{level}] {message}"
+                )
+                await LogCRUD.create(db, log_data)
+        except Exception as e:
+            # Fallback to console if DB fails
+            self.logger.error(f"Failed to log to DB: {e}")
+    
+    def _handle_task_exception(self, task: asyncio.Task):
+        try:
+            exception = task.exception()
+            if exception:
+                self.logger.error(f"Exception in background log_to_db task: {exception}")
+        except asyncio.CancelledError:
+            pass
+
+    def info(self, message: str, project_id: Optional[UUID] = None):
+        self.logger.info(message)
+        if project_id:
+            task = asyncio.create_task(self.log_to_db(project_id, message, "INFO"))
+            task.add_done_callback(self._handle_task_exception)
+    
+    def warning(self, message: str, project_id: Optional[UUID] = None):
+        self.logger.warning(message)
+        if project_id:
+            task = asyncio.create_task(self.log_to_db(project_id, message, "WARNING"))
+            task.add_done_callback(self._handle_task_exception)
+    
+    def error(self, message: str, project_id: Optional[UUID] = None):
+        self.logger.error(message)
+        if project_id:
+            task = asyncio.create_task(self.log_to_db(project_id, message, "ERROR"))
+            task.add_done_callback(self._handle_task_exception)
+    
+    def debug(self, message: str, project_id: Optional[UUID] = None):
+        self.logger.debug(message)
+        if project_id:
+            task = asyncio.create_task(self.log_to_db(project_id, message, "DEBUG"))
+            task.add_done_callback(self._handle_task_exception)
+
+# Global logger instance
+db_logger = DatabaseLogger()
 import datetime
 from typing import Optional
 
