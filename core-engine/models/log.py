@@ -17,5 +17,3 @@ class Log(Base):
     project = relationship("Project", back_populates="logs")
 
 # Add relationship to Project model
-from models.project import Project
-Project.logs = relationship("Log", back_populates="project")
