@@ -14,7 +14,9 @@ NC='\033[0m' # No Color
 
 # Configuration
 PROJECT_ID=${1:-"startup123"}
-CLUSTER_NAME="gke-${PROJECT_ID}-$(date +%s)"
+# Ajout d'un suffixe aléatoire pour éviter les conflits de nom de cluster
+RANDOM_SUFFIX=$(head /dev/urandom | tr -dc a-z0-9 | head -c6)
+CLUSTER_NAME="gke-${PROJECT_ID}-$(date +%s)-${RANDOM_SUFFIX}"
 NAMESPACE="default"
 MONITORING_NAMESPACE="monitoring"
 
