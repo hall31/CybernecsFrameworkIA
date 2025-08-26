@@ -1,4 +1,4 @@
-import datetime
+from datetime import datetime
 from typing import Optional
 
 def log_event(agent: str, message: str, level: str = "INFO") -> None:
