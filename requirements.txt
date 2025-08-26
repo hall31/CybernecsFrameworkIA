@@ -1,3 +1,19 @@
+# Dépendances Python pour le projet Startup Generator
+# Core dependencies
+typing-extensions>=4.0.0
+
+# Logging (inclus dans Python standard)
+# logging
+
+# OS operations (inclus dans Python standard)
+# os
+
+# Date/Time (inclus dans Python standard)
+# datetime
+
+# JSON (inclus dans Python standard)
+# json
+
 fastapi==0.104.1
 uvicorn==0.24.0
 python-dotenv==1.0.0
