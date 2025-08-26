@@ -49,4 +49,4 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 ENTRYPOINT ["docker-entrypoint.sh"]
 
 # Commande par défaut
-CMD ["python", "core-engine/main.py"]
+CMD ["uvicorn", "core-engine.api:app", "--host", "0.0.0.0", "--port", "8000"]

@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import axios from 'axios';
 
+const API_BASE = process.env.REACT_APP_API_URL || 'http://localhost:8000';
+
 // Composants stylisés
 const DashboardContainer = styled.div`
   min-height: 100vh;
@@ -206,38 +208,32 @@ const InvestorDashboard = () => {
   ];
 
   useEffect(() => {
-    // Simulation d'un appel API
     const fetchStartupData = async () => {
       try {
         setLoading(true);
-        
-        // En production, ceci serait un vrai appel API
-        // const response = await axios.get('/api/startup/latest');
-        
-        // Simulation des données
-        await new Promise(resolve => setTimeout(resolve, 1500));
-        
-        const mockData = {
-          project_id: "startup-123",
-          idea: "SaaS marketplace pour freelances",
-          valuation: "2.5M €",
-          kpis: {
-            "MRR": "15k €",
-            "CAC": "45 €",
-            "LTV": "500 €",
-            "Churn": "3%"
-          },
-          decision: "Investir",
-          next_funding: "100k €: 50k € en crédits cloud, 30k € en budget marketing, 20k € en ressources IA",
-          confidence_score: 0.85,
-          analysis_date: new Date().toISOString()
-        };
-        
-        setStartupData(mockData);
         setError(null);
+
+        const response = await axios.post(`${API_BASE}/create-startup`, {
+          idea: 'SaaS marketplace'
+        });
+
+        const investor = response.data?.agents?.investor || {};
+
+        const normalized = {
+          project_id: response.data.project_id,
+          idea: response.data.idea,
+          valuation: investor.valuation || 'N/A',
+          kpis: investor.kpis || { MRR: 'N/A', CAC: 'N/A', LTV: 'N/A', Churn: 'N/A' },
+          decision: investor.decision || 'N/A',
+          next_funding: investor.next_funding || 'N/A',
+          confidence_score: investor.confidence_score ?? 0,
+          analysis_date: investor.analysis_date || new Date().toISOString()
+        };
+
+        setStartupData(normalized);
       } catch (err) {
-        setError("Erreur lors du chargement des données");
-        console.error('Erreur:', err);
+        console.error('Erreur API:', err);
+        setError('Erreur lors de l\'appel API');
       } finally {
         setLoading(false);
       }
