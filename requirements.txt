@@ -1,0 +1,15 @@
+# Dépendances Python pour le projet Startup Generator
+# Core dependencies
+typing-extensions>=4.0.0
+
+# Logging (inclus dans Python standard)
+# logging
+
+# OS operations (inclus dans Python standard)
+# os
+
+# Date/Time (inclus dans Python standard)
+# datetime
+
+# JSON (inclus dans Python standard)
+# json
