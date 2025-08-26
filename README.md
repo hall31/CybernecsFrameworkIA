@@ -1,653 +1,287 @@
-# 🏛️ StartupDAO - Agent DAO Blockchain
+# 🏛️ Cybernecs Framework IA - Système de Co-Governance
 
-Plateforme de tokenisation et gouvernance décentralisée pour startups, intégrant des agents IA spécialisés dans la création de DAOs, la tokenisation et la gestion de trésorerie.
+## 🌟 Vue d'ensemble
 
-## 🚀 Architecture
+Le **Cybernecs Framework IA** est un système de gouvernance hybride IA+Humains qui combine l'efficacité de l'intelligence artificielle avec la sagesse et les valeurs humaines pour la prise de décisions stratégiques.
 
-### Core Engine (`/core-engine`)
+## 🎯 Objectifs
 
-#### Agents DAO (`/agents/dao_agent.py`)
+- **Gouvernance hybride** : Combiner IA et humains pour des décisions optimales
+- **Transparence totale** : Tous les votes et décisions sont tracés
+- **Pondération flexible** : Ajuster l'influence IA vs Humains selon le domaine
+- **DAO intégré** : Gestion décentralisée des propositions et votes
+- **Interface moderne** : Dashboard React avec visualisations avancées
 
-**TokenisationAgent** 🪙
-- Déploie des smart contracts ERC20/ERC1400 pour les startups
-- Gère la distribution des tokens (20% fondateur, 10% équipe, 70% investisseurs)
-- Calcule automatiquement le prix par token basé sur la valorisation
+## 🏗️ Architecture
 
-**GovernanceAgent** 🏛️
-- Crée des DAOs via smart contracts Governor
-- Implémente le système de vote "1 token = 1 vote"
-- Définit les règles de gouvernance et quorum
+### 1. **CoGovAgent** (`/core-engine/agents/cogov_agent.py`)
+- Agent principal de co-gouvernance
+- Gestion des votes IA et humains
+- Calcul des décisions pondérées
+- Historique complet des décisions
+- Membres du conseil IA et humains
 
-**TreasuryAgent** 💰
-- Gère la trésorerie DAO
-- Contrôle l'allocation des fonds via votes
-- Distribue les dividendes selon un calendrier défini
+### 2. **CoDAO** (`/core-engine/agents/codao.py`)
+- Organisation autonome décentralisée
+- Gestion des propositions et votes
+- Smart contracts simulés
+- Exécution automatique des décisions
+- Système de pondération configurable
 
-**DAOOrchestrator** 🎯
-- Orchestre la création complète d'une DAO
-- Coordonne les trois agents en séquence
-- Retourne un résultat unifié
+### 3. **API REST** (`/core-engine/main.py`)
+- Endpoints complets pour co-gouvernance
+- Gestion des propositions DAO
+- Système de vote hybride
+- Historique et métriques
 
-#### Smart Contracts (`/contracts`)
+### 4. **Dashboard React** (`/dashboard/src/components/CoGovernanceBoard.jsx`)
+- Interface moderne et intuitive
+- Visualisation des votes IA vs Humains
+- Ajustement de pondération en temps réel
+- Historique et membres du conseil
 
-**StartupToken.sol**
-- Contrat ERC20 personnalisé pour les startups
-- Gestion des allocations et valorisations
-- Fonctions de pause d'urgence et récupération
-
-### Frontend React (`/frontend`)
-
-**Page DAO & Tokenisation** (`/src/pages/DAOAndTokenisation.jsx`)
-- Dashboard moderne avec thème crypto/fintech
-- Visualisations Recharts (distribution tokens, allocation fonds)
-- Navigation intuitive vers les contrats blockchain
-
-**Navigation** (`/src/components/Navigation.jsx`)
-- Menu principal avec lien vers la page DAO
-- Design responsive et thème cohérent
-
-## 🛠️ Installation
+## 🚀 Installation et Démarrage
 
 ### Prérequis
 - Python 3.8+
 - Node.js 16+
-- Solidity 0.8.19+
+- npm ou yarn
 
-### Backend Python
+### Backend (Core Engine)
 ```bash
 cd core-engine
-pip install -r requirements.txt
+python3 -m venv venv
+source venv/bin/activate  # Linux/Mac
+# ou
+venv\Scripts\activate     # Windows
+
+pip install flask flask-cors openai
+python3 main.py
 ```
 
-### Frontend React
+### Frontend (Dashboard)
 ```bash
-cd frontend
+cd dashboard
 npm install
 npm run dev
 ```
 
-### Variables d'environnement
+## 📊 Utilisation
+
+### 1. **Créer une Décision**
 ```bash
-cp .env.example .env
-# Configurer ETHEREUM_RPC_URL et PRIVATE_KEY
+curl -X POST "http://localhost:8000/cogov/decision" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "topic": "Budget eau 2030",
+    "ai_vote": "Augmenter de 20%",
+    "human_vote": "Augmenter de 30%"
+  }'
 ```
 
-## 🧪 Tests
-
-### Test de l'agent DAO
+### 2. **Créer une Proposition DAO**
 ```bash
-python test_dao_agent.py
+curl -X POST "http://localhost:8000/codao/proposal" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "topic": "Nouvelle politique environnementale",
+    "description": "Mise en place de mesures écologiques",
+    "creator": "Équipe Green",
+    "ai_weighting": 60.0,
+    "human_weighting": 40.0
+  }'
 ```
 
-### Test de l'orchestrateur
+### 3. **Voter sur une Proposition**
 ```bash
-cd core-engine
-python main.py
-```
-
-## 📊 Workflow Complet
-
-1. **POST /create-startup** avec une idée
-2. **InvestorAgent** → Valorisation de la startup
-3. **TokenisationAgent** → Token ERC20 déployé
-4. **GovernanceAgent** → DAO créée avec contrats Governor
-5. **TreasuryAgent** → Trésorerie déployée et configurée
-6. **Dashboard** → Visualisation complète de la DAO
-
-## 🔧 Configuration
-
-### Réseaux supportés
-- Ethereum Mainnet
-- Sepolia Testnet
-- Polygon
-- Local (Ganache/Hardhat)
-
-### Paramètres DAO
-- Quorum: 10% des tokens
-- Période de vote: 7 jours
-- Limite retrait trésorerie: 5% par mois
-- Distribution dividendes: Trimestrielle
-
-## 📱 Interface Utilisateur
-
-### Design System
-- **Thème**: Crypto/Fintech avec dégradés bleus/violets
-- **Icônes**: FontAwesome avec émojis thématiques
-- **Graphiques**: Recharts pour visualisations
-- **Responsive**: Mobile-first avec navigation adaptative
-
-### Composants Principaux
-- **Section Token**: Symbole, valorisation, distribution
-- **Section DAO**: Adresse, règles, pouvoir de vote
-- **Section Trésorerie**: Fonds, allocation, règles
-- **Statistiques**: Métriques globales de la plateforme
-
-## 🔐 Sécurité
-
-### Smart Contracts
-- OpenZeppelin pour les standards ERC20
-- Pausable pour arrêt d'urgence
-- ReentrancyGuard contre les attaques
-- Ownable pour contrôle d'accès
-
-### Agents Python
-- Gestion d'erreurs robuste
-- Logging centralisé
-- Validation des paramètres
-- Isolation des composants
-
-## 🚀 Déploiement
-
-### Production
-```bash
-# Compiler les smart contracts
-npx hardhat compile
-
-# Déployer sur le réseau cible
-npx hardhat deploy --network mainnet
-
-# Lancer l'API
-cd core-engine
-python main.py
-
-# Build du frontend
-cd frontend
-npm run build
-```
-
-### Développement
-```bash
-# Lancer Hardhat local
-npx hardhat node
-
-# Déployer en local
-npx hardhat deploy --network localhost
-
-# Lancer les tests
-npm run test
-```
-
-## 📈 Roadmap
-
-### Phase 1 (Actuelle)
-- ✅ Agents DAO de base
-- ✅ Smart contracts ERC20
-- ✅ Dashboard React
-- ✅ Tests unitaires
-
-### Phase 2
-- 🔄 Intégration Web3.js
-- 🔄 Connecteurs wallet (MetaMask, WalletConnect)
-- 🔄 Système de votes en temps réel
-- 🔄 Notifications push
-
-### Phase 3
-- 📋 Marketplace de tokens
-- 📋 Système de staking
-- 📋 Intégration DeFi
-- 📋 Analytics avancés
-=======
-# 🚀 Epic4 - Générateur de Startups IA
-
-Un système complet de génération automatique de startups utilisant des agents IA spécialisés pour créer des entreprises complètes en quelques minutes.
-
-## 🎯 Fonctionnalités
-
-### 🤖 Agents IA Spécialisés
-
-- **CEO Agent** : Stratégie business, roadmap et modèle économique
-- **CTO Agent** : Architecture technique et stack technologique  
-- **Dev Agent** : Développement MVP backend et frontend
-- **Marketing Agent** : Contenu marketing, logo et landing page
-
-### 🎨 Marketing Agent (Nouveau !)
-
-Le **MarketingAgent** génère automatiquement :
-
-- **Contenu marketing** : Headlines, taglines, features, pricing
-- **Logo SVG** : Design minimal et moderne en SVG
-- **Landing page React** : Page complète avec Tailwind CSS
-  - Hero section avec logo et CTA
-  - Features section avec cartes
-  - Pricing section avec 3 plans
-  - Footer avec contact
-
-## 🏗️ Architecture
-
-```
-core-engine/
-├── agents/
-│   ├── marketing_agent.py      # Agent marketing principal
-│   └── marketing_agent_simple.py  # Version simplifiée
-├── logger.py                   # Système de logging
-└── __init__.py
-
-generated/
-├── branding/
-│   └── logo.svg               # Logo généré
-├── landing-page/              # Landing page React
-│   ├── LandingPage.jsx        # Composant principal
-│   ├── src/main.jsx           # Point d'entrée
-│   ├── index.css              # Styles Tailwind
-│   ├── package.json           # Dépendances
-│   └── tailwind.config.js     # Configuration Tailwind
-└── startup_result.json        # Résultat complet
-
-main_simple.py                  # Orchestrateur principal
-```
-
-## 🚀 Utilisation
-
-### 1. Test du Marketing Agent
-
-```bash
-python3 test_simple.py
-```
-
-### 2. Génération complète d'une startup
-
-```bash
-python3 main_simple.py
-```
-
-### 3. Utilisation programmatique
-
-```python
-from main_simple import create_startup
-
-# Créer une startup complète
-result = create_startup("SaaS marketplace pour freelances")
-print(f"Startup créée: {result['startup']['idea']}")
-```
-
-## 📋 Résultat attendu
-
-1. **POST /create-startup** avec `{"idea": "SaaS marketplace"}`
-2. **CEO Agent** → roadmap business
-3. **CTO Agent** → stack technique  
-4. **Dev Agents** → MVP backend + frontend
-5. **Marketing Agent** → logo.svg + landing page React
-6. **`/generated/landing-page`** contient une landing page marketing complète
-
-## 🎨 Landing Page React
-
-### Structure
-- **Hero Section** : Logo + headline + tagline + CTA
-- **Features Section** : 4 cartes avec fonctionnalités
-- **Pricing Section** : 3 plans (Starter, Pro, Enterprise)
-- **Footer** : Contact et copyright
-
-### Style
-- Fond blanc avec accent bleu (#2563EB)
-- Cards arrondies avec hover effects
-- Police Inter
-- Responsive design
-- Animations CSS
-
-## 🔧 Technologies
-
-- **Python 3.8+** : Agents IA et orchestration
-- **React 18** : Landing page
-- **Tailwind CSS** : Styling moderne
-- **Vite** : Build tool
-- **SVG** : Logo vectoriel
-
-## 📁 Fichiers générés
-
-- ✅ **Logo SVG** : Design minimal et moderne
-- ✅ **Landing page React** : Interface complète
-- ✅ **Configuration Tailwind** : Styles optimisés
-- ✅ **Package.json** : Dépendances prêtes
-- ✅ **Documentation** : README et guides
-
-## 🚀 Démarrage rapide
-
-```bash
-# 1. Cloner le projet
-git clone <repository>
-cd epic4-startup-generator
-
-# 2. Tester le marketing agent
-python3 test_simple.py
-
-# 3. Générer une startup complète
-python3 main_simple.py
-
-# 4. Voir les résultats
-ls -la generated/
-```
-
-## 📊 Exemple de sortie
-
-```
-🎉 STARTUP GÉNÉRÉE AVEC SUCCÈS !
-==================================================
-Idée: SaaS marketplace pour freelances
-Status: ready
-Phases complétées: 4
-Taux de succès: 100%
-
-📁 Fichiers générés:
-  - Logo: generated/branding/logo.svg
-  - Landing page: generated/landing-page
-  - Résumé complet: generated/startup_result.json
-```
-
-## 🔍 Logs et monitoring
-
-Le système génère des logs détaillés dans le dossier `logs/` :
-- Timestamps pour chaque étape
-- Succès et erreurs
-- Traçabilité complète du processus
-
-## 🎯 Prochaines étapes
-
-- [ ] API REST pour l'intégration
-- [ ] Interface web de gestion
-- [ ] Plus d'agents spécialisés
-- [ ] Templates de landing pages
-- [ ] Intégration avec des APIs externes
-
-# Epic6 - Core Engine avec Persistance
-
-## 🎯 Vue d'ensemble
-
-Epic6 est une plateforme complète de génération de startups avec un backend FastAPI robuste et persistant, une interface React moderne, et une architecture WebSocket pour les logs en temps réel.
-
-## 🏗️ Architecture
-
-```
-epic6/
-├── core-engine/          # Backend FastAPI + PostgreSQL
-│   ├── api/             # Routes et schémas API
-│   ├── core/            # Configuration et base de données
-│   ├── models/          # Modèles SQLAlchemy
-│   ├── utils/           # Utilitaires (logger)
-│   ├── generated/       # Code généré des projets
-│   └── main.py          # Point d'entrée FastAPI
-├── frontend/            # Interface React
-│   ├── src/
-│   │   ├── components/  # Composants React
-│   │   └── ...
-│   └── package.json
-└── README.md
-```
-
-## 🚀 Fonctionnalités Principales
-
-### Backend (Core Engine)
-- **API REST complète** avec FastAPI
-- **Persistance PostgreSQL** avec SQLAlchemy async
-- **WebSockets** pour les logs en temps réel
-- **Gestion des projets** avec CRUD complet
-- **Téléchargement ZIP** des projets générés
-- **Logs persistants** avec niveaux et timestamps
-- **Migrations Alembic** pour la base de données
-
-### Frontend (React)
-- **Dashboard Startups** avec table responsive
-- **Modal de détails** pour roadmap et stack
-- **Téléchargement direct** des projets
-- **Composant Logs** avec WebSocket en temps réel
-- **Interface moderne** et responsive
-
-## 📋 Prérequis
-
-- Docker et Docker Compose
-- Node.js 16+ (pour le frontend)
-- Python 3.11+ (pour le développement backend)
-
-## 🚀 Démarrage Rapide
-
-### 1. Démarrer le Backend
-
-```bash
-cd core-engine
-./start.sh
-```
-
-Le backend sera disponible sur `http://localhost:8000`
-
-### 2. Démarrer le Frontend
-
-```bash
-cd frontend
-npm install
-npm start
-```
-
-Le frontend sera disponible sur `http://localhost:3000`
-
-### 3. Vérifier l'Installation
-
-```bash
-# Test de l'API
-cd core-engine
-python test_api.py
-
-# Ouverture de la documentation
-open http://localhost:8000/docs
-```
-
-## 🌐 API Endpoints
-
-### Projets
-- `POST /api/v1/create-startup` - Créer un projet
-- `GET /api/v1/projects` - Lister les projets
-- `GET /api/v1/projects/{id}` - Détails d'un projet
-- `GET /api/v1/projects/{id}/download` - Télécharger le code
-
-### WebSocket
-- `WS /ws/logs/{project_id}` - Logs en temps réel
-
-### Santé
-- `GET /health` - Vérification de l'état
-
-## 📊 Modèles de Données
-
-### Project
-```python
-{
-  "id": "uuid",
-  "idea": "Description de l'idée",
-  "roadmap": {"phase1": "MVP", "phase2": "Beta"},
-  "stack": {"frontend": "React", "backend": "FastAPI"},
-  "created_at": "2024-01-01T00:00:00Z",
-  "path": "/generated/uuid"
-}
-```
-
-### Log
-```python
-{
-  "id": "uuid",
-  "project_id": "uuid",
-  "message": "Message du log",
-  "timestamp": "2024-01-01T00:00:00Z"
-}
+curl -X POST "http://localhost:8000/codao/vote" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "proposal_id": "abc123",
+    "voter": "Jean Dupont",
+    "vote": "Approuver",
+    "stake_amount": 100.0
+  }'
 ```
 
 ## 🎨 Interface Utilisateur
 
-### Dashboard Startups
-- Table responsive avec hover effects
-- Boutons d'action (Voir détails, Télécharger)
-- Modal pour afficher roadmap et stack
-- Formatage des dates en français
+### **Co-Governance Board**
+- **Décision en cours** : Affichage du sujet, votes IA (bleu), votes humains (vert), décision finale (violet)
+- **Pondération** : Slider et graphique pour ajuster l'influence IA vs Humains
+- **Historique** : Liste complète des décisions passées
+- **Membres du conseil** : Vue des participants IA et humains
 
-### Composant Logs
-- Connexion WebSocket automatique
-- Affichage en temps réel des logs
-- Contrôles de navigation (haut/bas)
-- Auto-scroll configurable
-- Indicateur de statut de connexion
+### **Navigation**
+- Onglets pour basculer entre Startup Factory et Co-Governance Board
+- Interface responsive et moderne
+- Thème institutionnel premium
 
 ## 🔧 Configuration
 
-### Variables d'Environnement Backend
-```bash
-DATABASE_URL=postgresql+asyncpg://admin:secret@db:5432/appdb
-SECRET_KEY=your-secret-key-here
+### Pondération par Défaut
+```python
+# Dans CoGovAgent
+ai_weighting = 50.0    # 50% IA
+human_weighting = 50.0 # 50% Humains
 ```
 
-### Variables d'Environnement Frontend
-```bash
-REACT_APP_API_URL=http://localhost:8000/api/v1
-REACT_APP_WS_URL=ws://localhost:8000
+### Pondération par Domaine
+```python
+# Exemples de pondération spécialisée
+climate_decisions = {"AI": 70.0, "Human": 30.0}  # IA majoritaire pour le climat
+cultural_decisions = {"AI": 40.0, "Human": 60.0} # Humains majoritaires pour la culture
 ```
 
-## 📝 Utilisation
+## 📈 Métriques et Monitoring
 
-### 1. Créer une Startup
+### **Statistiques du Système**
+- Nombre total de décisions
+- Taux de participation
+- Distribution des votes
+- Performance des agents IA
+
+### **API de Statut**
 ```bash
-curl -X POST "http://localhost:8000/api/v1/create-startup" \
-  -H "Content-Type: application/json" \
-  -d '{"idea": "SaaS marketplace"}'
-```
-
-### 2. Consulter les Projets
-- Ouvrir `http://localhost:3000`
-- Naviguer vers le dashboard Startups
-- Voir la liste des projets créés
-
-### 3. Télécharger un Projet
-- Cliquer sur "Télécharger" dans le dashboard
-- Le fichier ZIP sera téléchargé automatiquement
-
-### 4. Suivre les Logs
-- Utiliser le composant Logs avec un project_id
-- Les logs s'affichent en temps réel via WebSocket
-
-## 🛠️ Développement
-
-### Backend
-```bash
-cd core-engine
-
-# Installer les dépendances
-pip install -r requirements.txt
-
-# Lancer en mode développement
-uvicorn main:app --reload
-
-# Migrations
-alembic upgrade head
-```
-
-### Frontend
-```bash
-cd frontend
-
-# Installer les dépendances
-npm install
-
-# Lancer en mode développement
-npm start
-
-# Build de production
-npm run build
+curl "http://localhost:8000/status"
 ```
 
 ## 🧪 Tests
 
-### Tests API
+### **Test Automatique**
 ```bash
 cd core-engine
-python test_api.py
+python3 test_simple.py
 ```
 
-### Tests Frontend
+### **Tests Manuels**
+- Test des endpoints API
+- Validation du dashboard React
+- Vérification des calculs de pondération
+
+## 🔒 Sécurité
+
+- Validation des données d'entrée
+- Gestion des erreurs robuste
+- Logs complets de toutes les activités
+- Isolation des composants
+
+## 🚀 Déploiement
+
+### **Production**
+- Serveur WSGI (Gunicorn)
+- Base de données PostgreSQL
+- Load balancer
+- Monitoring et alertes
+
+### **Docker**
 ```bash
-cd frontend
-npm test
+docker-compose up -d
 ```
 
-## 📚 Documentation
+## 📚 Documentation Technique
 
+### **Structure des Données**
+```python
+# Décision de co-gouvernance
+{
+    "decision_topic": "Budget eau 2030",
+    "ai_vote": "Augmenter de 20%",
+    "human_vote": "Augmenter de 30%",
+    "final_decision": "Augmenter de 25.0%",
+    "weighting": {"AI": 50.0, "Human": 50.0},
+    "timestamp": "2025-08-26T19:18:05",
+    "ai_board_members": [...],
+    "human_board_members": [...]
+}
+```
 
-- **API**: http://localhost:8000/docs (Swagger UI)
-- **ReDoc**: http://localhost:8000/redoc
-- **Health Check**: http://localhost:8000/health
+### **Endpoints API**
+- `POST /cogov/decision` - Créer une décision
+- `GET /cogov/history` - Historique des décisions
+- `GET /cogov/board-members` - Membres du conseil
+- `POST /codao/proposal` - Créer une proposition
+- `POST /codao/vote` - Soumettre un vote
+- `GET /codao/proposals` - Lister les propositions
+- `POST /codao/execute/{id}` - Exécuter une proposition
 
-## 🚨 Dépannage
+## 🌟 Fonctionnalités Avancées
 
-### Problèmes Courants
+### **Intelligence Artificielle**
+- Analyse contextuelle des sujets
+- Génération automatique de votes IA
+- Optimisation des pondérations
+- Apprentissage des préférences
 
-1. **Base de données non accessible**
-   ```bash
-   docker-compose logs db
-   docker-compose restart db
-   ```
+### **Gouvernance Humaine**
+- Interface de vote intuitive
+- Système de stake et réputation
+- Délégation de votes
+- Participation démocratique
 
-2. **WebSocket non connecté**
-   - Vérifier l'URL WebSocket
-   - Contrôler les CORS
-
-3. **Erreurs de migration**
-   ```bash
-   docker-compose down -v
-   docker-compose up --build
-   ```
-
-### Logs
-```bash
-# Backend
-docker-compose logs -f app
-
-# Base de données
-docker-compose logs -f db
-
-# Frontend
-npm start
-
-**Epic4** - Transformez vos idées en startups complètes en quelques minutes ! 🚀
+### **DAO Features**
+- Propositions avec quorum
+- Périodes de vote configurables
+- Exécution automatique
+- Gestion des conflits
 
 ## 🔮 Roadmap
 
-- [ ] Authentification JWT
-- [ ] Gestion des rôles utilisateurs
-- [ ] API de génération de code
-- [ ] Intégration CI/CD
-- [ ] Monitoring et métriques
-- [ ] Tests automatisés
-- [ ] Documentation utilisateur
+### **Phase 1** ✅ (Terminée)
+- [x] Système de co-gouvernance de base
+- [x] API REST complète
+- [x] Dashboard React
+- [x] Tests et validation
 
+### **Phase 2** 🚧 (En cours)
+- [ ] Intégration blockchain
+- [ ] Smart contracts réels
+- [ ] Système de réputation avancé
+- [ ] Analytics et reporting
+
+### **Phase 3** 📋 (Planifiée)
+- [ ] IA prédictive pour les décisions
+- [ ] Intégration multi-organisations
+- [ ] Interface mobile
+- [ ] Internationalisation
 
 ## 🤝 Contribution
 
+### **Comment Contribuer**
 1. Fork le projet
-
-2. Créer une branche feature (`git checkout -b feature/AmazingFeature`)
-3. Commit les changements (`git commit -m 'Add AmazingFeature'`)
-4. Push vers la branche (`git push origin feature/AmazingFeature`)
-
 2. Créer une branche feature
-3. Commit les changements
-4. Push vers la branche
+3. Implémenter les changements
+4. Ajouter des tests
+5. Soumettre une pull request
 
-5. Ouvrir une Pull Request
+### **Standards de Code**
+- PEP 8 pour Python
+- ESLint pour JavaScript/React
+- Tests unitaires obligatoires
+- Documentation des APIs
+
+## 📞 Support
+
+### **Communauté**
+- Issues GitHub pour les bugs
+- Discussions pour les features
+- Wiki pour la documentation
+- Slack pour le support en temps réel
+
+### **Contact**
+- **Email** : support@cybernecs.ai
+- **GitHub** : [CybernecsFrameworkIA](https://github.com/hall31/CybernecsFrameworkIA)
+- **Documentation** : [docs.cybernecs.ai](https://docs.cybernecs.ai)
 
 ## 📄 Licence
 
-
-Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
-
-
-## 🆘 Support
-
-- **Issues**: GitHub Issues
-- **Documentation**: Wiki du projet
-- **Discord**: Serveur communautaire
-- **Email**: support@startupdao.com
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ---
 
-**Développé avec ❤️ par l'équipe StartupDAO**
+## 🎯 Résumé
 
-- **Documentation**: README et /docs
-- **API**: Swagger UI sur /docs
+Le **Cybernecs Framework IA** représente l'avenir de la gouvernance hybride, combinant la puissance de l'IA avec la sagesse humaine pour créer un système de prise de décision plus intelligent, transparent et équitable.
 
----
-
-**Epic6** - Transformez vos idées en startups fonctionnelles 🚀
+**🚀 Prêt à révolutionner la gouvernance ? Commencez dès maintenant !**
 
