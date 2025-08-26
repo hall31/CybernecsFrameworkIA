@@ -35,8 +35,7 @@ async def create_startup(request: StartupRequest):
         )
         
     except Exception as e:
-        log_event("main", f"Error generating roadmap: {str(e)}")
-        raise HTTPException(status_code=500, detail=f"Failed to generate roadmap: {str(e)}")
+        raise HTTPException(status_code=500, detail="Failed to generate roadmap due to an internal error.")
 
 if __name__ == "__main__":
     import uvicorn
