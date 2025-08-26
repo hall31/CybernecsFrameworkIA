@@ -36,25 +36,37 @@ class DatabaseLogger:
             # Fallback to console if DB fails
             self.logger.error(f"Failed to log to DB: {e}")
     
+    def _handle_task_exception(self, task: asyncio.Task):
+        try:
+            exception = task.exception()
+            if exception:
+                self.logger.error(f"Exception in background log_to_db task: {exception}")
+        except asyncio.CancelledError:
+            pass
+
     def info(self, message: str, project_id: Optional[UUID] = None):
         self.logger.info(message)
         if project_id:
-            asyncio.create_task(self.log_to_db(project_id, message, "INFO"))
+            task = asyncio.create_task(self.log_to_db(project_id, message, "INFO"))
+            task.add_done_callback(self._handle_task_exception)
     
     def warning(self, message: str, project_id: Optional[UUID] = None):
         self.logger.warning(message)
         if project_id:
-            asyncio.create_task(self.log_to_db(project_id, message, "WARNING"))
+            task = asyncio.create_task(self.log_to_db(project_id, message, "WARNING"))
+            task.add_done_callback(self._handle_task_exception)
     
     def error(self, message: str, project_id: Optional[UUID] = None):
         self.logger.error(message)
         if project_id:
-            asyncio.create_task(self.log_to_db(project_id, message, "ERROR"))
+            task = asyncio.create_task(self.log_to_db(project_id, message, "ERROR"))
+            task.add_done_callback(self._handle_task_exception)
     
     def debug(self, message: str, project_id: Optional[UUID] = None):
         self.logger.debug(message)
         if project_id:
-            asyncio.create_task(self.log_to_db(project_id, message, "DEBUG"))
+            task = asyncio.create_task(self.log_to_db(project_id, message, "DEBUG"))
+            task.add_done_callback(self._handle_task_exception)
 
 # Global logger instance
 db_logger = DatabaseLogger()
