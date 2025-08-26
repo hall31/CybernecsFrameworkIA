@@ -10,11 +10,9 @@ import json
 import time
 
 # Ajout du chemin des modules
-sys.path.append(os.path.join(os.path.dirname(__file__), 'orchestrator'))
-
-from main import handle_create_startup_request
 
 
+from orchestrator.main import handle_create_startup_request
 def test_create_startup_api():
     """Test de l'API de création de startup"""
     
