@@ -234,8 +234,11 @@ class MarketplaceHandler(BaseHTTPRequestHandler):
         }, 404)
     
     def log_message(self, format, *args):
-        """Désactive les logs par défaut du serveur HTTP"""
-        pass
+        """Redirige les logs du serveur HTTP vers le logger de l'application"""
+        logger.info("%s - - [%s] %s" %
+                    (self.client_address[0],
+                     self.log_date_time_string(),
+                     format % args))
 
 def run_server(port=5000):
     """Démarre le serveur HTTP"""
