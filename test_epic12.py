@@ -9,11 +9,13 @@ import json
 import time
 from datetime import datetime
 
+BASE_URL = "http://localhost:5000"
+
 def test_api_health():
     """Test de l'endpoint de santé"""
     print("🔍 Test de l'endpoint /health...")
     try:
-        response = requests.get("http://localhost:5000/health")
+        response = requests.get(f"{BASE_URL}/health")
         if response.status_code == 200:
             data = response.json()
             print(f"✅ API en ligne - Service: {data['service']}")
