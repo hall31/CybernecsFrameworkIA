@@ -6,18 +6,24 @@ Test direct du MarketingAgent
 import sys
 from pathlib import Path
 
+# Helper to add a directory to sys.path if not already present
+def add_to_syspath(path: Path):
+    path_str = str(path)
+    if path_str not in sys.path:
+        sys.path.insert(0, path_str)
+
 # Ajouter le répertoire courant au path Python
 current_dir = Path(__file__).parent
-sys.path.insert(0, str(current_dir))
+add_to_syspath(current_dir)
 
 # Import direct des classes
 try:
     # Import du logger
-    sys.path.insert(0, str(current_dir / "core-engine"))
+    add_to_syspath(current_dir / "core-engine")
     from logger import StartupLogger, get_logger
     
     # Import du marketing agent
-    sys.path.insert(0, str(current_dir / "core-engine" / "agents"))
+    add_to_syspath(current_dir / "core-engine" / "agents")
     from marketing_agent import MarketingAgent
     
     print("✅ Imports réussis!")
