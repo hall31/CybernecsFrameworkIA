@@ -93,16 +93,7 @@ class GitOpsAgent(BaseAgent):
             for file_path, content in files_to_create.items():
                 try:
                     # Vérifier si le fichier existe déjà
-                    try:
-                        repo.get_contents(file_path)
-                        # Fichier existe, le mettre à jour
-                        repo.update_file(
-                            file_path,
-                            f"Update {file_path}",
-                            content,
-                            repo.get_contents(file_path).sha
-                        )
-                    except:
+                    except GithubException:
                         # Fichier n'existe pas, le créer
                         repo.create_file(
                             file_path,
