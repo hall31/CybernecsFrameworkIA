@@ -10,7 +10,7 @@ def log_event(agent: str, message: str, level: str = "INFO") -> None:
         message (str): Log message
         level (str): Log level (INFO, WARNING, ERROR, DEBUG)
     """
-    timestamp = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     
     # Color codes for different log levels
     colors = {
