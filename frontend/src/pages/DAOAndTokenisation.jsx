@@ -188,10 +188,15 @@ const DAOAndTokenisation = () => {
                   <p className="text-gray-400 text-sm">Quorum</p>
                   <p className="text-xl font-bold text-blue-400">{daoData.dao.quorum}</p>
                 </div>
-                <button className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center">
+                <a
+                  href={daoData.dao.dao_address}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center"
+                >
                   <FaExternalLinkAlt className="mr-2" />
                   Accéder à la DAO
-                </button>
+                </a>
               </div>
               
               <div className="bg-black/30 rounded-lg p-6">
