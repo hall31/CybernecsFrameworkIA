@@ -1,0 +1,14 @@
+2025-08-26 03:50:43,514 - StartupOrchestrator - INFO - info:40 - 🚀 [03:50:43] Démarrage - Génération de la startup 'SaaS marketplace pour freelances'
+2025-08-26 03:50:43,515 - StartupOrchestrator - INFO - info:40 - 🚀 [03:50:43] Phase CEO - Définition de la stratégie et roadmap
+2025-08-26 03:50:43,515 - StartupOrchestrator - INFO - info:40 - 🎯 CEO Agent: Analyse de l'idée et définition de la stratégie
+2025-08-26 03:50:44,515 - StartupOrchestrator - INFO - info:40 - 🚀 [03:50:44] Phase CTO - Définition de l'architecture technique
+2025-08-26 03:50:44,515 - StartupOrchestrator - INFO - info:40 - ⚙️ CTO Agent: Définition de l'architecture technique
+2025-08-26 03:50:45,515 - StartupOrchestrator - INFO - info:40 - 🚀 [03:50:45] Phase Dev - Développement du MVP backend et frontend
+2025-08-26 03:50:45,515 - StartupOrchestrator - INFO - info:40 - 💻 Dev Agent: Développement du MVP backend et frontend
+2025-08-26 03:50:46,515 - StartupOrchestrator - INFO - info:40 - 🚀 [03:50:46] Phase Marketing - Génération du contenu marketing et landing page
+2025-08-26 03:50:46,516 - StartupOrchestrator - INFO - info:40 - 🎨 Marketing Agent: Génération du contenu marketing
+2025-08-26 03:50:46,516 - StartupOrchestrator - INFO - info:40 - ✅ Marketing - Contenu et landing page générés
+2025-08-26 03:50:47,516 - StartupOrchestrator - INFO - info:40 - 🚀 [03:50:47] Assemblage - Création du package final
+2025-08-26 03:50:47,517 - StartupOrchestrator - INFO - info:40 - 🔗 Assemblage des résultats de tous les agents
+2025-08-26 03:50:47,517 - StartupOrchestrator - INFO - info:40 - ✅ Sauvegarde - Résultat sauvegardé dans generated/startup_result.json
+2025-08-26 03:50:47,517 - StartupOrchestrator - INFO - info:40 - ✅ Startup générée - Package complet créé dans generated

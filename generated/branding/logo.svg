@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Cercle de fond -->
+  <circle cx="60" cy="60" r="55" fill="#2563EB" opacity="0.1"/>
+  
+  <!-- Forme principale -->
+  <path d="M30 40 L60 20 L90 40 L90 80 L60 100 L30 80 Z" 
+        fill="#2563EB" 
+        stroke="#1E40AF" 
+        stroke-width="2"/>
+  
+  <!-- Élément central -->
+  <circle cx="60" cy="60" r="15" fill="white"/>
+  <circle cx="60" cy="60" r="8" fill="#2563EB"/>
+  
+  <!-- Texte de l'idée -->
+  <text x="60" y="115" 
+        text-anchor="middle" 
+        font-family="Arial, sans-serif" 
+        font-size="8" 
+        fill="#2563EB" 
+        font-weight="bold">
+    OUTIL DE C
+  </text>
+</svg>
