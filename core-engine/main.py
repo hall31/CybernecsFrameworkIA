@@ -202,10 +202,11 @@ if __name__ == '__main__':
     logger.info("  GET  /portfolio/startup/<id> - Détails d'une startup")
     logger.info("  POST /portfolio/analysis - Force une nouvelle analyse")
     
+    debug_mode = os.environ.get("FLASK_DEBUG", "False").lower() in ("1", "true", "yes")
     app.run(
         host='0.0.0.0',
         port=5000,
-        debug=True
+        debug=debug_mode
     )
 from fastapi import FastAPI, WebSocket
 from fastapi.middleware.cors import CORSMiddleware
