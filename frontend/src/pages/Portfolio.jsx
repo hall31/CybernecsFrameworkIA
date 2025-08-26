@@ -68,9 +68,7 @@ const Portfolio = () => {
     { name: 'Drop', value: portfolioData.startups_summary.drop, color: '#EF4444' }
   ];
 
-  const resourceData = Object.entries(portfolioData.resource_allocation.cloud_credits).map(([id, percentage]) => ({
-    name: id,
-    value: parseInt(percentage),
+    value: parseFloat(percentage),
     color: '#3B82F6'
   }));
 
