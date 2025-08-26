@@ -3,9 +3,9 @@ import logging
 from typing import Dict, List, Any
 from datetime import datetime
 import openai
-from langchain.llms import OpenAI
-from langchain.chains import LLMChain
-from langchain.prompts import PromptTemplate
+from langchain_openai.llms import OpenAI
+from langchain_core.chains import LLMChain
+from langchain_core.prompts import PromptTemplate
 
 class ProductFeedbackAgent:
     """
