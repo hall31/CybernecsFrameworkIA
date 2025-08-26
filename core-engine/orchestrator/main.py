@@ -204,8 +204,7 @@ def handle_create_startup_request(request_data: Dict[str, Any]) -> Dict[str, Any
         if "idea" not in request_data:
             return {"error": "Le champ 'idea' est requis"}
         
-        idea = request_data["idea"]
-        if not idea or not isinstance(idea, str):
+        if not isinstance(idea, str) or not idea.strip():
             return {"error": "Le champ 'idea' doit être une chaîne non vide"}
         
         # Création de la startup avec infrastructure
