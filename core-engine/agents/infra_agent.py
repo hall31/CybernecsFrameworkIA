@@ -68,8 +68,7 @@ class InfraAgent:
         """Déploie un cluster Kubernetes (EKS ou GKE)"""
         logger.info(f"🔧 Déploiement du cluster Kubernetes pour {project_id}")
         
-        # Simulation du déploiement
-        time.sleep(2)
+        self._maybe_sleep("deploy_kubernetes")
         
         # Génération d'un nom de cluster unique
         cluster_name = f"gke-{project_id}-{random.randint(1000, 9999)}"
