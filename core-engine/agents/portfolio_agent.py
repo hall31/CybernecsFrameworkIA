@@ -203,13 +203,10 @@ class PortfolioAgent:
         """Calcule la valeur totale du portefeuille"""
         total_value = 0
         for startup in startups:
-            # Extraction de la valeur numérique (ex: "12M €" -> 12)
-            valuation_str = startup["valuation"].replace(" €", "").replace("M", "")
-            try:
-                value = float(valuation_str) * 1000000  # Conversion en euros
+            # Extraction de la valeur numérique robuste (ex: "12M €", "500K €", "1.2B €")
+            value = self._parse_valuation(startup.get("valuation", ""))
+            if value is not None:
                 total_value += value
-            except ValueError:
-                continue
                 
         # Formatage en millions d'euros
         if total_value >= 1000000:
