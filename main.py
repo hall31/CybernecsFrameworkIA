@@ -75,6 +75,15 @@ class StartupOrchestrator:
                 "status": "error"
             }
     
+    def _extract_legal_files(self, legal_result: Dict[str, Any]):
+        """Retourne la liste des fichiers légaux si la génération a réussi."""
+        try:
+            if isinstance(legal_result, dict) and legal_result.get("status") == "success":
+                return legal_result.get("generated_files", [])
+            return []
+        except Exception:
+            return []
+    
     def _generate_roadmap(self, idea: str) -> Dict[str, Any]:
         """Génère une roadmap de développement (simulation)"""
         return {
