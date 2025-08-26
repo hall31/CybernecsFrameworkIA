@@ -1,0 +1,41 @@
+{
+  "name": "shipfast-dashboard",
+  "version": "1.0.0",
+  "description": "Dashboard SaaS moderne pour gérer vos startups avec l'IA",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "keywords": [
+    "saas",
+    "dashboard",
+    "startup",
+    "ai",
+    "react",
+    "nextjs"
+  ],
+  "author": "ShipFast Team",
+  "license": "MIT",
+  "dependencies": {
+    "@headlessui/react": "^1.7.14",
+    "@heroicons/react": "^2.0.18",
+    "@tailwindcss/forms": "^0.5.3",
+    "lucide-react": "^0.263.1",
+    "next": "^13.4.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "tailwindcss": "^3.3.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.12",
+    "@types/node": "^20.0.0",
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "autoprefixer": "^10.4.14",
+    "eslint": "^9.34.0",
+    "postcss": "^8.4.24"
+  }
+}
