@@ -13,10 +13,13 @@ class BaseAgent(ABC):
     
     def setup_logging(self):
         """Configure le logging pour l'agent"""
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-        )
+        if not self.logger.handlers:
+            handler = logging.StreamHandler()
+            handler.setLevel(logging.INFO)
+            formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+            handler.setFormatter(formatter)
+            self.logger.addHandler(handler)
+        self.logger.setLevel(logging.INFO)
     
     def log_event(self, agent_name: str, action: str, details: Dict[str, Any] = None):
         """Log un événement avec timestamp et détails"""
