@@ -151,7 +151,7 @@ if __name__ == "__main__":
         print("🌐 API Endpoints: ✅")
         print("📱 Dashboard React: ✅")
         print("\n💡 Pour tester le dashboard:")
-        print("   1. Démarrer l'API: python3 simple_api.py")
+        print("   1. Démarrer l'API: python3 main.py")
         print("   2. Démarrer React: cd ../dashboard && npm run dev")
         print("   3. Naviguer vers 'Global Market'")
     else:
