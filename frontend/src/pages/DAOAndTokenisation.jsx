@@ -122,10 +122,15 @@ const DAOAndTokenisation = () => {
                   <p className="text-gray-400 text-sm">Prix par token</p>
                   <p className="text-2xl font-bold text-blue-400">{daoData.token.price_per_token}</p>
                 </div>
-                <button className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center">
+                <a
+                  href={`https://etherscan.io/token/${daoData.token.token_address}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 flex items-center justify-center"
+                >
                   <FaExternalLinkAlt className="mr-2" />
                   Voir sur Etherscan
-                </button>
+                </a>
               </div>
               
               <div className="bg-black/30 rounded-lg p-6">
