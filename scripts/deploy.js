@@ -17,15 +17,17 @@ async function main() {
 
   // 2. Déploiement du contrat Governor (simulation)
   console.log("\n🏛️ Déploiement du contrat Governor...");
-  // En production, déployer un vrai contrat Governor
-  const governorAddress = "0x" + "0".repeat(40); // Adresse simulée
-  console.log(`✅ Governor déployé à l'adresse: ${governorAddress}`);
+  // TODO: Déployer un vrai contrat Governor ici et récupérer son adresse.
+  throw new Error("Governor contract deployment not implemented. Remplacez le placeholder par le déploiement réel du contrat Governor.");
+  // const governorAddress = "0x" + "0".repeat(40); // Adresse simulée
+  // console.log(`✅ Governor déployé à l'adresse: ${governorAddress}`);
 
   // 3. Déploiement du contrat Treasury (simulation)
   console.log("\n💰 Déploiement du contrat Treasury...");
-  // En production, déployer un vrai contrat Treasury
-  const treasuryAddress = "0x" + "0".repeat(40); // Adresse simulée
-  console.log(`✅ Treasury déployé à l'adresse: ${treasuryAddress}`);
+  // TODO: Déployer un vrai contrat Treasury ici et récupérer son adresse.
+  throw new Error("Treasury contract deployment not implemented. Remplacez le placeholder par le déploiement réel du contrat Treasury.");
+  // const treasuryAddress = "0x" + "0".repeat(40); // Adresse simulée
+  // console.log(`✅ Treasury déployé à l'adresse: ${treasuryAddress}`);
 
   // 4. Initialisation du token avec des paramètres de démonstration
   console.log("\n🔧 Initialisation du token...");
