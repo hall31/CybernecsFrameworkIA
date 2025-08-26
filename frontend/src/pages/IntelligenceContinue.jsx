@@ -265,10 +265,7 @@ const IntelligenceContinue = () => {
               </CardHeader>
               <CardContent>
                 <div className="space-y-6">
-                  {epic10Data.iteration.roadmap.sprints.map((sprint, index) => (
-                    <div key={index} className="space-y-2">
-                      <div className="flex items-center justify-between">
-                        <span className="font-medium">{sprint.name}</span>
+                        <span className="font-medium">{sprint.sprint_number}</span>
                         <span className="text-sm text-gray-500">
                           {(sprint.completed_effort || 0)}/{sprint.total_effort} jours
                         </span>
