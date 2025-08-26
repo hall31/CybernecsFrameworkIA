@@ -577,7 +577,7 @@ if __name__ == "__main__":
     log_event("ADMIN_API", f"Documentation disponible sur: http://{ADMIN_API_HOST}:{ADMIN_API_PORT}/docs")
     
     uvicorn.run(
-        "admin_api:app",
+        app,
         host=ADMIN_API_HOST,
         port=ADMIN_API_PORT,
         reload=True,
