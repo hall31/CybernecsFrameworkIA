@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Script de test pour l'agent DAO
-Teste la création complète d'une DAO avec tokenisation, gouvernance et trésorerie
+Test script for the DAO agent
+Tests the complete creation of a DAO with tokenization, governance, and treasury
 """
 
 import sys
