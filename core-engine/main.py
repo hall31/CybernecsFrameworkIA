@@ -267,15 +267,9 @@ class Epic10Orchestrator:
             }
             
             # Exécution synchrone pour la compatibilité
-            loop = asyncio.new_event_loop()
-            asyncio.set_event_loop(loop)
-            
-            try:
-                epic10_result = loop.run_until_complete(
-                    self.run_complete_epic10(project_id, idea, mock_finance, mock_growth)
-                )
-            finally:
-                loop.close()
+            epic10_result = asyncio.run(
+                self.run_complete_epic10(project_id, idea, mock_finance, mock_growth)
+            )
             
             # Résultat final pour /create-startup
             startup_result = {
