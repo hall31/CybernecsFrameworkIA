@@ -59,35 +59,13 @@ export default function Execution({ projectId, idea }: ExecutionProps) {
     setError(null)
     
     try {
-      // Simulation d'appel API - en production, appeler /startup/{projectId}
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      
-      // Données simulées basées sur l'idée
-      const mockData: ExecutionData = {
-        gitops: {
-          repo_url: `https://github.com/user/startup-${projectId}`,
-          status: "configured",
-          repo_name: `startup-${projectId}`,
-          deployment_status: "deployed"
-        },
-        payments: {
-          stripe_plans: generateStripePlans(idea || "SaaS"),
-          checkout_url: "https://checkout.stripe.com/pay/cs_test_...",
-          status: "active"
-        },
-        ads: {
-          ads_platform: "LinkedIn",
-          campaign_id: `camp_${projectId}`,
-          status: "active",
-          budget: "50€/jour",
-          targeting: {
-            locations: ["France", "Belgique"],
-            industries: ["Technology", "Marketing"]
-          }
-        }
+      // Appel API réel à /startup/{projectId}
+      const response = await fetch(`/startup/${projectId}`);
+      if (!response.ok) {
+        throw new Error(`Erreur HTTP: ${response.status}`);
       }
-      
-      setExecutionData(mockData)
+      const data: ExecutionData = await response.json();
+      setExecutionData(data);
     } catch (err) {
       setError("Erreur lors du chargement des données d'exécution")
       console.error(err)
