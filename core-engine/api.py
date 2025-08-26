@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import Dict, Any, Optional
-from .main import orchestrator
+from main import orchestrator
 
 app = FastAPI(title="StartupAI Investor API", version="1.0.0")
 
