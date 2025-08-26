@@ -116,7 +116,7 @@ class SovereignFundAgent:
                     "status": "active",
                     "votes_for": 0,
                     "votes_against": 0,
-                    "deadline": "2024-12-31"
+                    "deadline": deadline_str
                 }
             ],
             "total_voters": 1000,
