@@ -25,8 +25,8 @@ export default function Orchestration() {
       
       // En production, appeler l'API réelle
       const [resAgents, resEpics] = await Promise.all([
-        fetch("http://localhost:8000/agents"),
-        fetch("http://localhost:8000/epics")
+        fetch(`${API_BASE_URL}/agents`),
+        fetch(`${API_BASE_URL}/epics`)
       ]);
 
       if (!resAgents.ok || !resEpics.ok) {
