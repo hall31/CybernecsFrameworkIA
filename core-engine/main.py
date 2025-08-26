@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+"""
+Main Orchestrator - Intégration des agents DAO avec le système existant
+"""
 import logging
 import json
 from typing import Dict, Any, Optional
@@ -1140,3 +1144,4 @@ async def update_fund_nav(fund_symbol: str, nav: str):
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=8000)
+
