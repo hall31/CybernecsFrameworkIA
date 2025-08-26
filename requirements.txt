@@ -1,0 +1,16 @@
+# Dépendances pour l'agent DAO blockchain
+web3==6.11.3
+eth-account==0.9.0
+eth-typing==3.5.0
+eth-utils==2.2.0
+cryptography==41.0.7
+py-solc-x==2.0.2
+python-dotenv==1.0.0
+
+# Logging et utilitaires
+colorama==0.4.6
+rich==13.6.0
+
+# Tests
+pytest==7.4.3
+pytest-asyncio==0.21.1
