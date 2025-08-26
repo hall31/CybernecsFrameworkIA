@@ -16,7 +16,9 @@ const Portfolio = () => {
   const fetchPortfolioData = async () => {
     try {
       setLoading(true);
-      const response = await fetch('http://localhost:5000/portfolio');
+      // Use environment variable for API base URL, fallback to relative path
+      const apiBaseUrl = process.env.REACT_APP_API_BASE_URL || '';
+      const response = await fetch(`${apiBaseUrl}/portfolio`);
       const result = await response.json();
       
       if (result.success) {
