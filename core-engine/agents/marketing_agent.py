@@ -181,14 +181,15 @@ class MarketingAgent:
         print(f"✅ Landing page React créée: {self.landing_dir}")
         return str(self.landing_dir)
     
-    def _generate_landing_page_jsx(self, marketing_content: Dict, logo_path: str) -> str:
+    def _generate_landing_page_jsx(self, logo_path: str) -> str:
         """
         Génère le composant React principal de la landing page
         """
         return f'''import React from 'react';
+import marketingContent from './marketing_content.json';
 
 const LandingPage = () => {{
-  const {{ headline, tagline, features, pricing }} = {json.dumps(marketing_content, ensure_ascii=False, indent=2)};
+  const {{ headline, tagline, features, pricing }} = marketingContent;
 
   return (
     <div className="min-h-screen bg-white">
