@@ -270,10 +270,10 @@ const IntelligenceContinue = () => {
                       <div className="flex items-center justify-between">
                         <span className="font-medium">{sprint.name}</span>
                         <span className="text-sm text-gray-500">
-                          {sprint.completed || 0}/{sprint.total} jours
+                          {(sprint.completed_effort || 0)}/{sprint.total_effort} jours
                         </span>
                       </div>
-                      <Progress value={sprint.progress || 0} className="h-2" />
+                      <Progress value={sprint.total_effort ? ((sprint.completed_effort || 0) / sprint.total_effort) * 100 : 0} className="h-2" />
                       <p className="text-sm text-gray-500">{sprint.estimated_duration}</p>
                     </div>
                   ))}
