@@ -85,7 +85,7 @@ services:
         os.makedirs("generated/backend", exist_ok=True)
         
         backend_dockerfile_content = '''FROM php:8.2-cli
-RUN apt-get update && apt-get install -y unzip git curl libpq-dev \\
+RUN apt-get update && apt-get install -y unzip git curl libpq-dev \\\\
   && docker-php-ext-install pdo pdo_pgsql
 WORKDIR /app
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
