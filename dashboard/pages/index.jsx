@@ -25,7 +25,8 @@ const Home = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('/create-startup', {
+      const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+      const response = await fetch(`${apiBaseUrl}/create-startup`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
