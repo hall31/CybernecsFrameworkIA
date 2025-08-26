@@ -1,6 +1,5 @@
 from utils.logger import log_event
 from typing import Dict, List, Optional
-import random
 from datetime import datetime
 
 class SovereignFundAgent:
