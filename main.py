@@ -59,7 +59,7 @@ async def health_check():
     """Vérification de l'état de l'API"""
     return {
         "status": "healthy",
-        "timestamp": "2024-01-15T10:30:00Z",
+        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
         "agents": {
             "gitops": "available",
             "payments": "available", 
