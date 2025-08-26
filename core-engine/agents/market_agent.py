@@ -90,7 +90,7 @@ class MarketAgent:
                 "total_supply": 800000,
                 "circulating_supply": 600000,
                 "valuation": 2800000,
-                "sector": "Artificial Intelligence",
+                "sector": "AI",
                 "stage": "Seed"
             }
         ]
