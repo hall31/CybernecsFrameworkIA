@@ -83,14 +83,16 @@ class SovereignFundAgent:
         integrated_allocations["Infrastructures"] = "22%"  # National security
         
         # Rebalance to maintain 100%
-        total = sum(float(v.strip('%')) for v in integrated_allocations.values())
+        # Parse all percentage strings to floats once
+        allocations_float = {k: float(v.strip('%')) for k, v in integrated_allocations.items()}
+        total = sum(allocations_float.values())
         if total != 100:
             # Normalize to 100%
             factor = 100 / total
-            for key in integrated_allocations:
-                value = float(integrated_allocations[key].strip('%'))
-                integrated_allocations[key] = f"{value * factor:.1f}%"
-        
+            for key in allocations_float:
+                allocations_float[key] = allocations_float[key] * factor
+        # Convert back to string format with percent sign for output
+        integrated_allocations = {k: f"{v:.1f}%" for k, v in allocations_float.items()}
         return integrated_allocations
     
     def _deploy_sovereign_dao(self) -> dict:
