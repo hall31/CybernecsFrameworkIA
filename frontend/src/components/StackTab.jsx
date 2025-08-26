@@ -62,8 +62,7 @@ const StackTab = ({ data }) => {
               {data[category.key]?.map((tech, index) => (
                 <div key={index} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
                   <span className="text-sm font-medium text-gray-700">{tech}</span>
-                  <span className={`text-xs px-2 py-1 rounded-full border ${getColorClasses(category.color)}`}>
-                    {tech}
+                    ✔️
                   </span>
                 </div>
               ))}
