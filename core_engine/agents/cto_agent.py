@@ -40,8 +40,9 @@ class CTOAgent(BaseAgent):
         self._generate_backend_dockerfile()
         self._generate_frontend_dockerfile()
         
-        # Mise à jour du roadmap avec la stack technique
-        roadmap["technical_stack"] = stack_info
+        # Mise à jour du roadmap avec la stack technique (sans modifier l'entrée)
+        updated_roadmap = roadmap.copy()
+        updated_roadmap["technical_stack"] = stack_info
         
         self.log_event("CTOAgent", "Stack technique générée avec succès")
         
