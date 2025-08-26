@@ -37,3 +37,28 @@ services:
 
 volumes:
   postgres_data:
+  core-engine:
+    build: .
+    container_name: core-engine
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./:/app
+      - /app/__pycache__
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - core-engine-network
+
+networks:
+  core-engine-network:
+    driver: bridge
+
