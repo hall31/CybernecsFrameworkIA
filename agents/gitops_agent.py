@@ -13,8 +13,7 @@ class GitOpsAgent(BaseAgent):
         self.github_token = os.getenv('GITHUB_TOKEN')
         self.github_username = os.getenv('GITHUB_USERNAME')
         
-        if not self.github_token or not self.github_username:
-            raise ValueError("GitHub credentials manquantes dans les variables d'environnement")
+            raise ValueError("GitHub credentials missing in environment variables")
         
         self.github = Github(self.github_token)
         self.user = self.github.get_user()
