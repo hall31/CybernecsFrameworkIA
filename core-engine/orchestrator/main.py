@@ -11,11 +11,9 @@ import time
 from typing import Dict, Any
 
 # Ajout du chemin des agents
-sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'agents'))
-
-from infra_agent import InfraAgent, MonitoringAgent, AlertingAgent
 
 
+from agents.infra_agent import InfraAgent, MonitoringAgent, AlertingAgent
 class InfrastructureOrchestrator:
     """Orchestrateur pour l'infrastructure DevOps"""
     
