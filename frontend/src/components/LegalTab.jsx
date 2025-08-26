@@ -193,7 +193,7 @@ const LegalTab = ({ data }) => {
                 </div>
                 <div className="mt-6 text-center">
                   <button
-                    onClick={() => window.open(`/generated/legal/${selectedDoc.filename}`, '_blank')}
+                    onClick={() => window.open(`${process.env.PUBLIC_URL}/generated/legal/${selectedDoc.filename}`, '_blank')}
                     className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors"
                   >
                     Ouvrir le document complet
