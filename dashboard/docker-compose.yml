@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  dashboard:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=production
+      - NEXT_TELEMETRY_DISABLED=1
+    volumes:
+      - ./public:/app/public
+    restart: unless-stopped
+    networks:
+      - shipfast-network
+
+  # Service pour le backend core-engine (optionnel)
+  core-engine:
+    image: python:3.11-slim
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONPATH=/app
+    volumes:
+      - ./backend:/app
+    working_dir: /app
+    command: >
+      sh -c "pip install -r requirements.txt &&
+              uvicorn main:app --host 0.0.0.0 --port 8000 --reload"
+    restart: unless-stopped
+    networks:
+      - shipfast-network
+
+networks:
+  shipfast-network:
+    driver: bridge
+
+volumes:
+  dashboard-data:
