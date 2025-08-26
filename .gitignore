@@ -1,0 +1,26 @@
+# Python artifacts
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+.eggs/
+.build/
+.dist/
+.pytest_cache/
+
+# Virtualenv
+.venv/
+venv/
+ENV/
+
+# Node/Frontend
+node_modules/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Generated content
+generated/legal/*.md
