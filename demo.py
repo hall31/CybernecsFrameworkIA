@@ -7,18 +7,21 @@ Montre toutes les fonctionnalités : CEO, CTO, Dev, Marketing
 import sys
 from pathlib import Path
 
-# Ajouter le répertoire courant au path Python
-current_dir = Path(__file__).parent
-sys.path.insert(0, str(current_dir))
+# Ajouter les répertoires nécessaires au path Python
+def setup_import_paths():
+    current_dir = Path(__file__).parent
+    sys.path.insert(0, str(current_dir))
+    sys.path.insert(0, str(current_dir / "core-engine"))
+    sys.path.insert(0, str(current_dir / "core-engine" / "agents"))
+
+setup_import_paths()
 
 # Import direct des classes
 try:
     # Import du logger
-    sys.path.insert(0, str(current_dir / "core-engine"))
     from logger import StartupLogger, get_logger
     
     # Import du marketing agent simplifié
-    sys.path.insert(0, str(current_dir / "core-engine" / "agents"))
     from marketing_agent_simple import MarketingAgent
     
     print("✅ Imports réussis!")
