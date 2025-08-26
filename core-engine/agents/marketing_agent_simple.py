@@ -186,10 +186,8 @@ class MarketingAgent:
         Génère le composant React principal de la landing page
         """
         # Créer le contenu JSX en évitant les f-strings complexes
-        jsx_content = '''import React from 'react';
-
-const LandingPage = () => {
-  const marketingData = ''' + json.dumps(marketing_content, ensure_ascii=False, indent=2) + ''';
+  // Embedded marketing data (safely serialized)
+  const marketingData = ''' + json.dumps(marketing_content, ensure_ascii=True, indent=2) + ''';
 
   return (
     <div className="min-h-screen bg-white">
