@@ -10,8 +10,7 @@ class PaymentsAgent(BaseAgent):
         super().__init__()
         stripe.api_key = os.getenv('STRIPE_SECRET_KEY')
         
-        if not stripe.api_key:
-            raise ValueError("Clé Stripe manquante dans les variables d'environnement")
+            raise ValueError("Stripe key missing in environment variables")
     
     def run(self, idea: str) -> Dict[str, Any]:
         """Configure la monétisation pour l'idée de startup"""
