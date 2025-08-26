@@ -75,8 +75,11 @@ class GovernanceAgent:
     """Agent de gouvernance DAO avec contrats Governor"""
     
     def __init__(self):
-        self.w3 = Web3(Web3.HTTPProvider(os.getenv('ETHEREUM_RPC_URL', 'http://localhost:8545')))
-        self.account = Account.from_key(os.getenv('PRIVATE_KEY', '0x' + '0' * 64))
+        private_key = os.getenv('PRIVATE_KEY')
+        if not private_key:
+            logger.error("❌ PRIVATE_KEY environment variable is not set. Refusing to start with insecure default.")
+            raise RuntimeError("PRIVATE_KEY environment variable is required for GovernanceAgent.")
+        self.account = Account.from_key(private_key)
         
     def run(self, project_id: str, token_address: str) -> Dict[str, Any]:
         """Crée une DAO avec contrats de gouvernance"""
