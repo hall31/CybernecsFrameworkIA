@@ -1,3 +1,5 @@
+# Package agents pour le core-engine
+# Contient tous les agents intelligents du système
 """
 Agents - Module contenant tous les agents spécialisés
 """

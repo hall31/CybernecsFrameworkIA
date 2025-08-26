@@ -1,3 +1,8 @@
+Flask==2.3.3
+Flask-CORS==4.0.0
+Werkzeug==2.3.7
+python-dateutil==2.8.2
+
 
 # Epic10 - IA Autonome pour Mon ShipFast
 # Dépendances Python pour les agents d'IA autonome
