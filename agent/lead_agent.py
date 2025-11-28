@@ -12,9 +12,10 @@ logger = logging.getLogger(__name__)
 
 
 def _apply_filter(leads: Iterable[Lead], settings: AgentSettings) -> Iterable[Lead]:
+    lower_industries = [i.lower() for i in settings.filter.industries] if settings.filter.industries else []
     for lead in leads:
         if settings.filter.industries:
-            if not lead.industry or lead.industry.lower() not in [i.lower() for i in settings.filter.industries]:
+            if not lead.industry or lead.industry.lower() not in lower_industries:
                 continue
         if settings.filter.countries:
             if not lead.country or lead.country.lower() not in [c.lower() for c in settings.filter.countries]:
