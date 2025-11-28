@@ -174,3 +174,28 @@ Pour commencer à utiliser Mon ShipFast, suivez ces étapes :
 ## Licence
 
 Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## Agent IA pour la génération de leads
+
+Un agent Python minimal est fourni pour prioriser des leads en fonction de mots-clés et de filtres (industrie, pays, taille). Il s'appuie sur un scoring rapide par similarité de mots, prêt à être remplacé par un reranking LLM.
+
+### Structure
+- `agent/config.py` : configuration de l'agent et filtres.
+- `agent/models.py` : modèle de données `Lead`.
+- `agent/data_sources.py` : sources de données (JSON local, mémoire, composite).
+- `agent/ranking.py` : scoring par tokens et reranking.
+- `agent/lead_agent.py` : orchestration filtre + déduplication + reranking.
+- `main.py` : CLI pour tester avec un jeu d'exemples.
+
+### Jeu de données d'exemple
+`data/leads.json` contient quelques sociétés fictives pour tester le flux localement.
+
+### Exécution rapide
+```bash
+python main.py "outbound IA" --industries Marketing --countries France --limit 3
+```
+
+### Tests
+```bash
+pytest
+```

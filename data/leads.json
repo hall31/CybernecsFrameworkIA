@@ -1,0 +1,37 @@
+[
+  {
+    "name": "OutboundBoost",
+    "industry": "Marketing",
+    "country": "France",
+    "employee_count": 35,
+    "description": "IA outbound pour les sales teams B2B"
+  },
+  {
+    "name": "DataPilot",
+    "industry": "Analytics",
+    "country": "Canada",
+    "employee_count": 80,
+    "description": "Collecte de signaux commerciaux et scoring prédictif"
+  },
+  {
+    "name": "GrowthForge",
+    "industry": "Marketing",
+    "country": "USA",
+    "employee_count": 20,
+    "description": "Automatisation du cold email alimentée par GPT"
+  },
+  {
+    "name": "FinTrack",
+    "industry": "Fintech",
+    "country": "France",
+    "employee_count": 120,
+    "description": "Outils de conformité et KYC pour banques digitales"
+  },
+  {
+    "name": "EcoSupply",
+    "industry": "Supply Chain",
+    "country": "Germany",
+    "employee_count": 55,
+    "description": "Optimisation des achats industriels via IA"
+  }
+]
