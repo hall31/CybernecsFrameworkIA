@@ -22,10 +22,10 @@ def _apply_filter(leads: Iterable[Lead], settings: AgentSettings) -> Iterable[Le
         if lower_countries:
             if not lead.country or lead.country.lower() not in lower_countries:
                 continue
-        if settings.filter.min_employee_count and lead.employee_count:
+        if settings.filter.min_employee_count is not None and lead.employee_count is not None:
             if lead.employee_count < settings.filter.min_employee_count:
                 continue
-        if settings.filter.max_employee_count and lead.employee_count:
+        if settings.filter.max_employee_count is not None and lead.employee_count is not None:
             if lead.employee_count > settings.filter.max_employee_count:
                 continue
         yield lead
